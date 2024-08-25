@@ -1,16 +1,14 @@
 import React from 'react';
 import '../css/Contact.css';
 import { data } from './sidepanelData';
+import { MyForm } from '../components/MyForm';
 import { Link } from 'react-router-dom';
 
 export function ContactMe() {
 
     return (
         <section className='ContactMe-Section'>
-
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSccwZVcDmcA5ly9_TmWd9jMcBMcDGNbmj5LbhJGc65AuuaNKA/viewform?embedded=true" width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-
-
+            <MyForm/>
               <ul className="social-link-Contact">
                     {data.socialData.map((element, index) => (
                         element.link ? (

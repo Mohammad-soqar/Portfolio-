@@ -1,0 +1,106 @@
+.About-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 1rem;
+}
+
+.metric-item {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
+    background: #24242417;
+    align-items: center;
+    border: var(--border-general);
+    padding: 1rem;
+    text-align: center;
+    flex-wrap: wrap;
+    border-radius: 2rem;
+}
+
+.metric-num {
+    font-size: 4rem;
+}
+
+.catchy-phrase {
+    font-size: 4rem;
+}
+
+.about-cv {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.about-cv p {
+    font-size: 1.3rem;
+
+}
+
+.personal {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.personal-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    margin: 0rem 3rem 0rem 0rem;
+}
+
+.personal-info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.skills-section h3 {
+    font-size: 4rem;
+}
+
+.personal-info-item p {
+    font-size: 1.2rem;
+}
+
+.personal-info-item label {
+    font-size: .9rem;
+    color: #c5c5c5;
+}
+
+@media only screen and (max-width: 600px) {
+    .skills {
+        display: grid;
+        width: 100%;
+        gap: 2rem;
+        grid-template-columns:  1fr !important;
+        justify-content: space-between;
+        justify-items: center;
+    }
+}
+
+.skills {
+    display: grid;
+    width: 100%;
+    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    justify-items: center;
+}

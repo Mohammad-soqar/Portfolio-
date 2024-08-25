@@ -1,0 +1,24 @@
+{
+ "Images": {
+    "logoDark": "/images/logo.svg",
+    "logoLight": "/images/logo-light.svg"
+  },
+"socialData": [
+    {
+      "name": "twitter",
+      "link": ""
+    },
+    {
+      "name": "instagram",
+      "link": "https://www.instagram.com/mohammad_soqar/"
+    },
+    {
+      "name": "facebook",
+      "link": ""
+    },
+    {
+      "name": "pinterest",
+      "link": ""
+    }
+  ]
+}

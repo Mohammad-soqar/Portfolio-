@@ -1,0 +1,81 @@
+@media only screen and (max-width: 600px) {
+    .SidePanel {
+        position: relative !important;
+    }
+}
+
+
+
+.SidePanel {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    top: 20px;
+    z-index: 999;
+    background-color: #353535;
+    padding: 2rem 2.5rem;
+    border-radius: 33px;
+    gap: 1.4rem;
+
+}
+
+
+
+.SidePanel h1 {
+    width: min-content;
+    font-size: 2.4em;
+
+}
+
+.SidePanel h2 {
+    font-size: 1.4em;
+}
+
+.SidePanel label {
+    color: #e4e4e4;
+    font-size: 0.8em;
+
+}
+
+.cta-btn {
+    padding: 1rem;
+    max-width: 100%;
+    text-align: center;
+    background: var(--button-gradient);
+    border-radius: 1rem;
+}
+
+
+.sidepanel-tags {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    gap: 1rem;
+    padding: 0;
+}
+
+.social-link li {
+    border: 2px solid #7e7e7e;
+    padding: 1rem 1rem .6rem 1rem;
+    border-radius: 1.3rem;
+
+}
+
+.hover-effect img{
+    opacity: 60%;
+    transition: .5s;
+}
+
+.hover-effect:hover img{
+    opacity: 100%;
+    transition: .5s;
+
+}

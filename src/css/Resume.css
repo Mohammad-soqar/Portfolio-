@@ -1,0 +1,30 @@
+.resume{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.resume-content{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.table-title{
+    margin: 1rem 0rem;
+    font-size:3rem;
+    color: #fff;
+}
+
+.resume-description{
+    margin: 1rem  0rem;
+    font-size: 1.4rem;
+    width: 70%;
+}
+
+.tables{
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}

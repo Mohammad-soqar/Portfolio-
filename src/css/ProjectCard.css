@@ -1,0 +1,68 @@
+.project-card2 {
+    position: relative;
+    background-size: cover;
+    background-position:top;
+    width: 100%;
+    height: 450px;
+    border-radius: 1.3rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.project-overlay {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(#00000000,#000000);
+    color: white;
+    width: 100%;
+    padding: 1rem 1rem;
+    box-sizing: border-box;
+}
+
+
+
+.project-overlay h3 {
+    margin: 0 0 10px;
+    font-size: 1.5em;
+}
+
+.project-overlay p {
+    margin: 0 0 10px;
+    font-size: 1em;
+    color: #ddd;
+}
+
+.tech-stack {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.tech-stack li {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.875em;
+    color: white;
+}
+
+
+.project-image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.project-card2:hover .project-image {
+    transform: scale(1.05);
+}
+

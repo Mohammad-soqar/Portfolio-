@@ -1,0 +1,22 @@
+.toolList{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 2.4rem;
+}
+
+.toolIcon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 0.125rem solid #303033;
+    justify-content: space-around;
+    border-radius: 2rem;
+    gap: 1rem;
+}
+
+.toolIcon p{
+    color: #fff;
+    font-size: 1.3rem;
+}
+

@@ -35,7 +35,7 @@ export function ProjectDetails() {
                         <div>
                             <h2 className="section-title">Overview:</h2>
                             <p className="project-description">{project.description}</p>
-                            <p className="project-link"><a href={project.projectLink} target="_blank" rel="noopener noreferrer">View Project</a></p>
+                            {/* <p className="project-link"><a href={project.projectLink} target="_blank" rel="noopener noreferrer">View Project</a></p> */}
                         </div>
                         <div>
                             <h3 className='section-benefits-title'>Project Benefits:</h3>

@@ -91,7 +91,55 @@ export const data = {
       ],
       projectLink: "https://my-portfolio.com"
     },
-
+    {
+      id: "zm",
+      title: "Zoom Medical",
+      description: "Zoom Medical is a comprehensive beauty and cosmetics booking system integrated with a CRM. It allows users to schedule beauty treatments, view detailed service descriptions, and manage their appointments through a user-friendly web interface.",
+      shortDescription: "A beauty and cosmetics booking system integrated with CRM functionalities.",
+      techStack: ["react", "nodejs", "mongodb"],
+      platforms: "Web",
+      category: "Web App, CRM",
+      client: "Zoom Tourism",
+      date: "01/2024 - 02/2024",
+      color: "rgba(42, 148, 123, 0.4)",
+      summary: "Zoom Medical offers an intuitive platform for managing beauty appointments and services. Users can browse various treatments, book appointments, and track their service history. The system's integration with a CRM enhances customer relationship management and streamlines booking processes.",
+      projectBenefits: "Enhanced User Experience: Provides a seamless booking experience with detailed service information. CRM Integration: Improves customer relationship management and streamlines operations.",
+      images: ["./images/projects/ZoomMedical.png", "./images/projects/ZoomMedical-2.png", "./images/projects/ZoomMedical-3.png"],
+      projectLink: "https://my-portfolio.com"
+    },
+    {
+      id: "Codyle",
+      title: "Codyle",
+      description: "Codyle is a comprehensive platform developed for managing and organizing tech events within a university setting. It provides tools for event creation, participant registration, and feedback collection, facilitating streamlined management of tech-focused activities and fostering community engagement.",
+      shortDescription: "A tech-focused university club platform for organizing and managing tech events.",
+      techStack: ["react", "nodejs", "mongodb"],
+      platforms: "Web",
+      category: "Web App",
+      client: "Business Idea and University Club",
+      date: "07/2022 - 09/2022",
+      color: "rgba(42, 148, 123, 0.4)",
+      summary: "Codyle streamlines the organization of tech events by offering a centralized platform for managing schedules, registrations, and communications. The system allows club members to easily create and promote events, track attendance, and gather valuable feedback from participants.",
+      projectBenefits: "Efficient Event Management: Simplifies the process of organizing and managing tech events.",
+      images: ["./images/projects/Codyle.png", "./images/projects/Codyle-2.png", "./images/projects/Codyle-3.png"],
+      projectLink: "https://my-portfolio.com"
+    },
+    {
+      id: "IAS",
+      title: "Internship Automation System",
+      description: "The Internship Automation System is a comprehensive tool developed for automating the entire internship process at the university. It manages paperwork, track internship progress, and streamline communication between students and administration, eliminating the need for physical visits to the university.",
+      shortDescription: "A system for automating the internship process, managing paperwork, and tracking progress.",
+      techStack: ["aspnet", "SqlServer"],
+      platforms: "Web",
+      category: "Web App",
+      client: "University Project (A+)",
+      date: "04/2024 - 02/2024",
+      color: "rgba(42, 148, 123, 0.4)",
+      summary: "The Internship Automation System simplifies the management of internship-related tasks by providing a digital platform for all necessary processes. This system reduces administrative overhead and improves efficiency by allowing students to handle all internship requirements online.",
+      projectBenefits: "Streamlined Administration: Reduces the need for physical paperwork and visits. Enhanced Efficiency: Automates and tracks all aspects of the internship process, improving overall workflow.",
+      images: ["./images/projects/IAS.png", "./images/projects/IAS-2.png", "./images/projects/IAS-3.png"],
+      projectLink: "https://my-portfolio.com"
+    },
+    
     {
       id: "bookworm",
       title: "Bookworm",

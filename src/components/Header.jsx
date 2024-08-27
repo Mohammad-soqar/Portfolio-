@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link as ScrollLink } from 'react-scroll';
 import { data } from './sidepanelData';
 import { Link } from 'react-router-dom';
+import '../css/Header.css';
 
 
 export function Header() {
@@ -20,7 +21,7 @@ export function Header() {
                     <img src={data.Images.star} alt="" />
                     <p>Let's meet!</p>
                 </div>
-                <h1>I am {data.aboutMe.personalInfo.name} Software Enginner</h1>
+                <h1>I am {data.aboutMe.personalInfo.name} Software Engineer</h1>
                 <div className="header-cta-section">
                     <ScrollLink
                         className="header-cta highlight-btn"

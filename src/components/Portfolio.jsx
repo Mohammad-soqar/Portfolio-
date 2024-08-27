@@ -2,6 +2,7 @@
 import React from 'react';
 import { ProjectCard } from './ProjectCard';
 import { data } from './sidepanelData';
+import '../css/Portfolio.css';
 
 export function Portfolio() {
     return (

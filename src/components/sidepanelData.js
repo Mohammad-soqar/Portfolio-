@@ -33,6 +33,7 @@ export const data = {
     aspnet2: "./images/tech/Aspnet2.png",//
     react2: "./images/tech/React2.png",//
     figma2: "./images/tech/Figma2.png",//
+    SqlServer: "./images/tech/sqlserver.png",//
 
   },
 
@@ -43,7 +44,7 @@ export const data = {
       title: 'LocaLink',
       description: 'LocaLink is a dynamic social media platform focused on community engagement. It enables users to connect, share content, and interact with their friends and followers. The application includes features like posting updates, multimedia sharing, and community-driven discussions, all within a safe and interactive environment.',
       shortDescription: 'A Social Media App',
-      techStack: ['flutter', 'dart', 'firebase'],
+      techStack: ['flutter', 'dart', 'firebase', "figma"],
       platforms: "Android, iOS, Web",
       category: "Mobile App, Flutter",
       client: "Graduation Project",
@@ -55,19 +56,56 @@ export const data = {
       projectLink: 'https://my-portfolio.com',
     },
     {
+      id: "ztw",
+      title: "Zoom Tourism",
+      description: "Zoom Tourism features a CRM system and website designed for travel and tourism management. It includes functionalities for managing car rentals, trip bookings, and content management, along with a support page for developers.",
+      shortDescription: "A Tourism Management System",
+      techStack: ["aspnet", "SqlServer", "figma"],
+      platforms: "Web",
+      category: "Web App, CRM",
+      client: "Zoom Tourism",
+      date: "08/2023 - 11/2023",
+      color: "rgba(196, 148, 148, 0.4)",
+      summary: "This system offers a comprehensive solution for managing travel and tourism operations, including car rentals and trip bookings. With an integrated CRM and support features, it streamlines various aspects of tourism management and content handling.",
+      projectBenefits: "Zoom Tourism simplifies travel management by integrating car rentals, trip bookings, and content management into a single platform. Its CRM capabilities and support features enhance operational efficiency and improve customer service.",
+      images: ["./images/projects/ZoomTourism.png", "./images/projects/ZoomTourism-2.png", "./images/projects/ZoomTourism-3.png"],
+      projectLink: "https://my-portfolio.com"
+    },
+    {
+      id: "Reson8",
+      title: "Reson8 Media Website Design",
+      description: "A complete UI/UX design for Reson8 Media, a cutting-edge media company specializing in channel branding, real-time graphics, template building, and more. The design showcases a modern, engaging, and visually appealing layout that reflects the innovative nature of the services they provide.",
+      shortDescription: "UI/UX design for Reson8 Media's website",
+      techStack: ["figma", "illustrator"],
+      platforms: "Web",
+      category: "Web App, UI/UX Design",
+      client: "Reson8 Media",
+      date: "04/2024",
+      color: "rgba(255, 94, 88, 0.4)",
+      summary: "This project involved designing a comprehensive website for Reson8 Media, a media company offering a range of services from channel branding to virtual sets. The design emphasizes a clean and modern aesthetic, with a focus on user experience and easy navigation.",
+      projectBenefits: "The website design successfully encapsulates the innovative spirit of Reson8 Media, providing an intuitive and visually striking platform for their clients. It helps in effectively communicating the company's range of services while enhancing user engagement.",
+      images: [
+        "./images/projects/Reson8.png",
+        "./images/projects/Reson8-2.png",
+        "./images/projects/Reson8-3.png"
+      ],
+      projectLink: "https://my-portfolio.com"
+    },
+
+    {
       id: "bookworm",
       title: "Bookworm",
       description: "Bookworm is a comprehensive e-commerce platform dedicated to the sale of e-books. It provides a user-friendly interface for browsing, purchasing, and managing a vast collection of digital books. The application is designed to facilitate a seamless shopping experience for book enthusiasts.",
       shortDescription: "An E-Book Store",
-      techStack: ["html", "css", "javascript"],
+      techStack: ["aspnet", "SqlServer", "figma"],
       platforms: "Web",
       category: "E-Commerce, Web App",
       client: "Practice Project",
       date: "01/2023 - 05/2023",
-      color: "rgba(255, 223, 186, 0.2)",
+      color: "rgba(67, 201, 214, 0.4)",
       summary: "This e-commerce platform for e-books offers a streamlined shopping experience, featuring a user-friendly interface for browsing and purchasing digital books. Designed for ease of use, Bookworm ensures a smooth process for book enthusiasts looking to explore and buy e-books.",
       projectBenefits: "Bookworm simplifies the process of buying e-books with its intuitive interface and efficient browsing capabilities. It provides a convenient platform for users to find and purchase digital books, enhancing the overall e-commerce experience for book lovers.",
-      images: ["./images/projects/Bookworm.png", "./images/projects/Bookworm-2.png"],
+      images: ["./images/projects/Bookworm.png", "./images/projects/Bookworm-2.png", "./images/projects/Bookworm-3.png"],
       projectLink: "https://my-portfolio.com"
     },
     {
@@ -75,33 +113,18 @@ export const data = {
       title: "Onifood",
       description: "Onifood is an innovative application for restaurant reservations and food ordering. It allows users to book a table, place food orders in advance, and pay via QR code. The app ensures that meals are prepared by the time users arrive, enhancing the dining experience.",
       shortDescription: "A Restaurant Reservation & Ordering App",
-      techStack: ["flutter", "dart", "firebase"],
+      techStack: ["figma", "illustrator"],
       platforms: "Android, iOS",
-      category: "Mobile App, Flutter",
+      category: "Mobile App, UI/UX Design",
       client: "Practice Project",
-      date: "06/2023 - 12/2023",
-      color: "rgba(255, 123, 123, 0.2)",
+      date: "04/2023",
+      color: "rgba(255, 193, 33, 0.4)",
       summary: "This app facilitates restaurant reservations and pre-ordering of food, ensuring that meals are ready when users arrive. With QR code integration for easy payment and ordering, Onifood enhances the efficiency and convenience of dining out.",
       projectBenefits: "Onifood streamlines the dining experience by enabling users to reserve tables, place orders in advance, and handle payments seamlessly through QR codes. This approach improves restaurant service efficiency and enhances customer satisfaction.",
-      images: ["./images/projects/Onifood.png", "./images/projects/Onifood-2.png"],
+      images: ["./images/projects/Onifood.png", "./images/projects/Onifood-2.png", "./images/projects/Onifood-3.png"],
       projectLink: "https://my-portfolio.com"
     },
-    {
-      id: "ztw",
-      title: "Zoom Tourism",
-      description: "Zoom Tourism features a CRM system and website designed for travel and tourism management. It includes functionalities for managing car rentals, trip bookings, and content management, along with a support page for developers.",
-      shortDescription: "A Tourism Management System",
-      techStack: ["asp.net", "sql", "javascript"],
-      platforms: "Web",
-      category: "Web App, CRM",
-      client: "Zoom Tourism",
-      date: "01/2024 - 06/2024",
-      color: "rgba(255, 206, 86, 0.2)",
-      summary: "This system offers a comprehensive solution for managing travel and tourism operations, including car rentals and trip bookings. With an integrated CRM and support features, it streamlines various aspects of tourism management and content handling.",
-      projectBenefits: "Zoom Tourism simplifies travel management by integrating car rentals, trip bookings, and content management into a single platform. Its CRM capabilities and support features enhance operational efficiency and improve customer service.",
-      images: ["./images/projects/ZoomTourism.png", "./images/projects/ZoomTourism-2.png"],
-      projectLink: "https://my-portfolio.com"
-    },
+
     // Add more projects as needed
   ],
 
@@ -142,7 +165,7 @@ export const data = {
       name: "Mohammad Soqar",
       phone: "+905388782103",
       email: "mnsoqar1@gmail.com",
-      aboutnme: "Hello, I'm a software engineering graduate from Uskudar University, specializing in full-stack development. Throughout my academic journey and beyond, I have polished my skills by completing several independent projects that have helped me gain hands-on experience in developing complex web applications. Furthermore, I have honed my skills as a freelancer at Codyle, where I have worked for over five years in graphic design. As a result, I'm proficient in both technical and creative areas of the industry, allowing me to bring a unique perspective to my development work. With my passion for technology and an eye for design, I'm excited to tackle new challenges and work on innovative projects that push the boundaries of what's possible.",
+      aboutnme: "Hi, I'm Mohammad Soqar, a Software Engineer with expertise in full-stack and mobile development, specializing in Flutter, ASP.NET MVC, React, and Node.js. I recently graduated from Üsküdar University, where I developed LocaLink, a location-based social media app that fosters community engagement. With over six years of experience, I've worked on diverse projects, from a real estate CRM system to a healthcare app using AI for Rheumatoid Arthritis management. I’m passionate about creating impactful, user-friendly solutions and always eager to take on new challenges. Explore my portfolio to see my work, and let's connect if you're looking for a driven professional to collaborate with.",
       location: "Istanbul, Turkey",
       cvLink: "https://drive.google.com/file/d/1q0cG1bVah8QrlUMPj5JTfZyf2XW1WvWt/view?usp=drive_link",
       catchyphrase: "Converting complex challenges into clear, intuitive designs.",

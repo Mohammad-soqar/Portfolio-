@@ -107,7 +107,7 @@ export function About() {
                     </div>
                 </div>
                 <div className="skills-section">
-                    <h3 className='gradient-text catchy-phrase'>Skills :</h3>
+                    <h3 className='gradient-text catchy-phrase'>Tech-Stack :</h3>
                     <div className='skills'>
                         {skills.map((skill, index) => (
                             <TechCard

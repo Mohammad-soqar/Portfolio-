@@ -6,16 +6,36 @@
     gap: 3rem;
 }
 
-
-
-
 .tables{
     display: flex;
     flex-direction: column;
     gap: 3rem;
 }
 
-@media (min-width:1350px) {
+@media (min-width: 1200px) {
+    .resume{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin: 3rem 0rem 0rem 0rem;
+    }
+
+    .table-title{
+        margin: 1rem 0rem;
+        font-size:2.5rem;
+        color: #fff;
+    }
+   
+    .resume-description{
+        margin: 1rem  0rem;
+        font-size: 1.2rem;
+        width: 70%;
+    }
+}
+
+
+@media (min-width:1500px) {
     .table-title{
         margin: 1rem 0rem;
         font-size:3rem;

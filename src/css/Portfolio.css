@@ -1,0 +1,41 @@
+/* Portfolio Section */
+.portfolio {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.portfolio-grid {
+    display: grid;
+    gap: 2rem;
+    justify-content: center;
+    /* Center the grid horizontally */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.portfolio-content {
+    padding-bottom: 2rem;
+}
+
+
+@media (min-width: 1350px) {
+
+    .portfolio {
+        padding: var(--section-padding);
+        gap: 1rem;
+    }
+
+    .portfolio-grid {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1350px) {
+    .portfolio {
+        align-items: center;
+    }
+
+    .portfolio-tag {
+        margin-right: 50% !important;
+    }
+}

@@ -1,16 +1,7 @@
-
-
-
-
 .contact {
     display: flex;
     flex-direction: column;
 }
-
-
-
-
-
 
 .Contact-Me a {
     position: relative;
@@ -42,12 +33,50 @@
     width: 100%;
 }
 
-@media (min-width:1350px) {
+@media (min-width:1200px) {
     .ContactMe-Section {
         margin: 20rem 0rem 0rem 0rem;
         display: flex;
         flex-direction: column;
         gap: 3rem;
+    }
+
+    .social-link-Contact {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2.4rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .social-link-Contact li {
+        border: 2px solid #7e7e7e;
+        padding: 1rem 3rem .6rem 3rem;
+        border-radius: 1.3rem;
+
+    }
+
+    .Contact-Me {
+        font-size: 2.5rem;
+        width: 90%;
+    }
+
+    .contact-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 2rem;
+    }
+}
+
+@media (min-width:1500px) {
+    .ContactMe-Section {
+        margin: 20rem 0rem 0rem 0rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+
     }
 
     .social-link-Contact {
@@ -63,17 +92,19 @@
         border: 2px solid #7e7e7e;
         padding: 1rem 3rem .6rem 3rem;
         border-radius: 1.3rem;
-    
+
     }
 
     .Contact-Me {
         font-size: 2.5rem;
         width: 70%;
     }
+
     .contact-info {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-bottom: 2rem;
     }
 }
 
@@ -95,7 +126,7 @@
         padding: 0;
     }
 
-    .social-link-Contact a{
+    .social-link-Contact a {
         display: flex;
         justify-content: center;
         scale: .8;
@@ -106,22 +137,23 @@
         border: 2px solid #7e7e7e;
         padding: 1rem 1rem .6rem 1rem;
         border-radius: 1.3rem;
-    
+
     }
 
-    .social-link-Contact img{
+    .social-link-Contact img {
         scale: 0.8;
     }
 
     .Contact-Me {
         font-size: 1.5rem;
     }
+
     .contact-info {
         display: grid;
         justify-content: space-between;
         align-items: center;
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-
+        padding-bottom: 2rem;
         gap: 1rem;
     }
 }

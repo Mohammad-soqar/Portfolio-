@@ -83,9 +83,9 @@ export function About() {
                 <div className='personal'>
                     <div className='about-cv'>
                         <p>{personalInfo.aboutnme}</p>
-                        <Link to={personalInfo.cvLink} className="header-cta" download>
+                        <a href='https://drive.google.com/file/d/1q0cG1bVah8QrlUMPj5JTfZyf2XW1WvWt/view?usp=drive_link' target="_blank" className="header-cta" download>
                             Download CV <img src={data.Images.star} alt="Star" />
-                        </Link>
+                        </a>
                     </div>
                     <div className='personal-info'>
                         <div className='personal-info-item'>

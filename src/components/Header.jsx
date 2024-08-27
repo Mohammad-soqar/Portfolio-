@@ -14,13 +14,13 @@ export function Header() {
 
 
     return (
-        <section className="header-section">
+        <section className="header-section home" id="home">
             <div className="header-main">
                 <div className="section-tag">
                     <img src={data.Images.star} alt="" />
                     <p>Let's meet!</p>
                 </div>
-                <h1>I'm {data.aboutMe.personalInfo.name} Software Enginner</h1>
+                <h1>I am {data.aboutMe.personalInfo.name} Software Enginner</h1>
                 <div className="header-cta-section">
                     <ScrollLink
                         className="header-cta highlight-btn"
@@ -34,7 +34,9 @@ export function Header() {
                         My Work
                         <img src={data.Images.star} alt="" />
                     </ScrollLink>
-                    <Link className="header-cta">Download CV <img src={data.Images.star} alt="" /></Link>
+                    <a href="https://drive.google.com/file/d/1q0cG1bVah8QrlUMPj5JTfZyf2XW1WvWt/view?usp=drive_link" className="header-cta" target="_blank" rel="noopener noreferrer">
+                        Download CV <img src={data.Images.star} alt="" />
+                    </a>
                 </div>
 
 

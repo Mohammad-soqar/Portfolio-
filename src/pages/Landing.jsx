@@ -12,7 +12,7 @@ export function Landing() {
         <>
 
 
-            <div className="portfolio-content">
+            <div className="portfolio-content" id="content">
                 <Header />
                 <Portfolio/>
                 <About/>

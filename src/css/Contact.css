@@ -1,44 +1,127 @@
-.ContactMe-Section{
-    margin: 5rem 0rem 0rem 0rem;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-}
 
-.contact-info{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.contact{
+
+
+
+.contact {
     display: flex;
     flex-direction: column;
 }
 
-.Contact-Me{
-    font-size: 2.5rem;
-    width: 70%;
-}
 
 
 
-.social-link-Contact {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    gap: 1rem;
-    padding: 0;
-}
 
-.social-link-Contact li {
-    border: 2px solid #7e7e7e;
-    padding: 1rem 3rem .6rem 3rem;
-    border-radius: 1.3rem;
+
+.Contact-Me a {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    /* Ensures the element's width can be controlled */
+    font-weight: 700;
+    font-variant-numeric: lining-nums;
+    background: linear-gradient(0.35turn, #dbd2f1 10%, #c9bbeb 70%);
+    background: linear-gradient(0.35turn, #dbd2f1 10%, #c9bbeb 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
 }
 
-.social-link-Contact img{
- 
+.Contact-Me a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    /* Thickness of the underline */
+    bottom: 0;
+    left: 0;
+    background-color: currentColor;
+    transition: width 0.3s ease-in-out;
+}
+
+.Contact-Me a:hover::after {
+    width: 100%;
+}
+
+@media (min-width:1350px) {
+    .ContactMe-Section {
+        margin: 20rem 0rem 0rem 0rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .social-link-Contact {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2.4rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .social-link-Contact li {
+        border: 2px solid #7e7e7e;
+        padding: 1rem 3rem .6rem 3rem;
+        border-radius: 1.3rem;
+    
+    }
+
+    .Contact-Me {
+        font-size: 2.5rem;
+        width: 70%;
+    }
+    .contact-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-width:1350px) {
+    .ContactMe-Section {
+        margin: 6rem 0rem 0rem 0rem;
+        display: flex;
+        flex-direction: column;
+        padding: 0rem 2rem;
+        gap: 3rem;
+    }
+
+    .social-link-Contact {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 2.4rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .social-link-Contact a{
+        display: flex;
+        justify-content: center;
+        scale: .8;
+
+    }
+
+    .social-link-Contact li {
+        border: 2px solid #7e7e7e;
+        padding: 1rem 1rem .6rem 1rem;
+        border-radius: 1.3rem;
+    
+    }
+
+    .social-link-Contact img{
+        scale: 0.8;
+    }
+
+    .Contact-Me {
+        font-size: 1.5rem;
+    }
+    .contact-info {
+        display: grid;
+        justify-content: space-between;
+        align-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+        gap: 1rem;
+    }
 }

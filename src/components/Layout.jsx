@@ -33,7 +33,7 @@ export function Layout() {
     return (
         <div className="layout">
             <SidePanel />
-            <div className="content" id="content">
+            <div className="content" >
                 <Navbar />
                 <Outlet />
             </div>

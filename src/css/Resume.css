@@ -1,9 +1,4 @@
-.resume{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2rem;
-}
+
 
 .resume-content{
     display: flex;
@@ -11,20 +6,54 @@
     gap: 3rem;
 }
 
-.table-title{
-    margin: 1rem 0rem;
-    font-size:3rem;
-    color: #fff;
-}
 
-.resume-description{
-    margin: 1rem  0rem;
-    font-size: 1.4rem;
-    width: 70%;
-}
+
 
 .tables{
     display: flex;
     flex-direction: column;
     gap: 3rem;
+}
+
+@media (min-width:1350px) {
+    .table-title{
+        margin: 1rem 0rem;
+        font-size:3rem;
+        color: #fff;
+    }
+    .resume{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        margin: 10rem 0rem 0rem 0rem;
+    }
+    .resume-description{
+        margin: 1rem  0rem;
+        font-size: 1.4rem;
+        width: 70%;
+    }
+    
+}
+
+@media (max-width:1350px) {
+    .table-title{
+        margin: 1rem 0rem;
+        font-size:2rem;
+        color: #fff;
+    }
+    .resume{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+        margin: 5rem 0rem 0rem 0rem;
+        padding: 0rem 2rem
+    }
+    .resume-description{
+        margin: 1rem  0rem;
+        font-size: 1.4rem;
+      
+    }
+    
 }

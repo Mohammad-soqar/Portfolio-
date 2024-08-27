@@ -8,7 +8,7 @@ export function ContactMe() {
 
     return (
         <section className='ContactMe-Section'>
-            <MyForm/>
+          {/*<MyForm/>*/}
               <ul className="social-link-Contact">
                     {data.socialData.map((element, index) => (
                         element.link ? (

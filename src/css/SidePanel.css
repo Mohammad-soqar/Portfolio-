@@ -5,38 +5,19 @@
 }
 
 
-
 .SidePanel {
     position: sticky;
     display: flex;
     flex-direction: column;
     height: fit-content;
-    top: 20px;
     z-index: 999;
     background-color: #353535;
-    padding: 2rem 2.5rem;
     border-radius: 33px;
-    gap: 1.4rem;
-
 }
 
 
 
-.SidePanel h1 {
-    width: min-content;
-    font-size: 2.4em;
 
-}
-
-.SidePanel h2 {
-    font-size: 1.4em;
-}
-
-.SidePanel label {
-    color: #e4e4e4;
-    font-size: 0.8em;
-
-}
 
 .cta-btn {
     padding: 1rem;
@@ -58,16 +39,11 @@
     align-items: center;
     list-style: none;
     margin: 0;
-    gap: 1rem;
+    gap: .5rem;
     padding: 0;
 }
 
-.social-link li {
-    border: 2px solid #7e7e7e;
-    padding: 1rem 1rem .6rem 1rem;
-    border-radius: 1.3rem;
 
-}
 
 .hover-effect img{
     opacity: 60%;
@@ -78,4 +54,78 @@
     opacity: 100%;
     transition: .5s;
 
+}
+
+
+
+@media (min-width:1350px) {
+  
+.SidePanel {
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    top: 50px;
+    z-index: 999;
+    background-color: #353535;
+    padding: 2rem 2.5rem;
+    border-radius: 33px;
+    gap: 1.4rem;
+
+}
+
+
+
+    .SidePanel h1 {
+        width: min-content;
+        font-size: 2.4em;
+    
+    }
+    
+    .SidePanel h2 {
+        font-size: 1.4em;
+    }
+    
+    .SidePanel label {
+        color: #e4e4e4;
+        font-size: 0.8em;
+    
+    }
+    
+}
+
+@media (max-width:1350px) {
+    .SidePanel {
+        margin: 1.5rem;
+        padding: 1rem;
+        gap: .8rem;
+    }
+    .social-link li {
+        border: 2px solid #7e7e7e;
+        padding: .5rem .5rem .1rem .5rem;
+        border-radius: 1.3rem;
+    
+    }
+
+    .social-link {
+        margin: 0rem rem;
+    }
+
+
+    .SidePanel h1 {
+        width: min-content;
+        font-size: 1.8em;
+    
+    }
+    
+    .SidePanel h2 {
+        font-size: 1.2em;
+    }
+    
+    .SidePanel label {
+        color: #e4e4e4;
+        font-size: 0.8em;
+    
+    }
+    
 }

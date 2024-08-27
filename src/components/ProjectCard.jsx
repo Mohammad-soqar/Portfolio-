@@ -1,26 +1,21 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; 
-import '../css/ProjectCard.css'
+import '../css/ProjectCard.css';
 
-export function ProjectCard({ title, description, imageUrl, techStack, projectLink }) {
-    const navigate = useNavigate(); // use useNavigate() for react-router v6
-
-    const handleClick = () => {
-        navigate.push(projectLink);
-    };
+export function ProjectCard({ id, title, description, imageUrl, techStack }) {
+    // Construct the URL for the project details page
+    const projectUrl = `/#/project/${id}`;
 
     return (
-        <div className="project-card2">
-        <div className="project-image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
-        <div className="project-overlay">
-            <h3>{title}</h3>
-           
-            <ul className="tech-stack"> 
-                {techStack.map((tech, index) => (
-                    <li key={index}>{tech}</li>
-                ))}
-            </ul>
-        </div>
-    </div>
+        <a href={projectUrl} target="_blank" rel="noopener noreferrer" className="project-card2">
+            <div className="project-image" style={{ backgroundImage: `url(${imageUrl})` }}></div>
+            <div className="project-overlay">
+                <h3>{title}</h3>
+                <ul className="tech-stack">
+                    {techStack.map((tech, index) => (
+                        <li key={index}>{tech}</li>
+                    ))}
+                </ul>
+            </div>
+        </a>
     );
 }

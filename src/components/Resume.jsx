@@ -108,7 +108,7 @@ export function Resume() {
 
     return (
         <section className='resume'>
-            <div className="section-tag">
+            <div className="section-tag ">
                 <img src={data.Images.star} alt="Star" />
                 <p>Resume!</p>
             </div>

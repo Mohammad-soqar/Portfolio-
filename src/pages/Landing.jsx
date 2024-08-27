@@ -13,10 +13,11 @@ export function Landing() {
 
 
             <div className="portfolio-content" id="content">
+                
                 <Header />
-                <Portfolio/>
-                <About/>
-                <Resume/>
+                <Portfolio  />
+                <About  />
+                <Resume />
                 <ContactMe/>
               
             </div>

@@ -33,8 +33,9 @@ export function Layout() {
     return (
         <div className="layout">
             <SidePanel />
+
             <div className="content" >
-                <Navbar />
+
                 <Outlet />
             </div>
         </div>

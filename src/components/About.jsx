@@ -59,7 +59,7 @@ export function About() {
     ];
 
     return (
-        <section className='About'>
+        <section id='about' className='About'>
             <div className="section-tag">
                 <img src={data.Images.star} alt="Star" />
                 <p>About Me!</p>

@@ -13,7 +13,7 @@ export function Navbar() {
     return (
         <div className="navbar">
             <ScrollLink
-            containerId="content"
+                containerId="content"
                 to="home"
                 spy={true}
                 duration={500}
@@ -22,17 +22,17 @@ export function Navbar() {
                 Home
             </ScrollLink>
             <ScrollLink
-             containerId="content"
+                containerId="content"
                 to="portfolio"
-                
                 smooth={true}
                 spy={true}
-                duration={1000}
+                duration={500}
                 onClick={() => setMobileToggle(false)}
             >
                 Portfolio
             </ScrollLink>
             <ScrollLink
+                containerId="content"
                 to="about"
                 spy={true}
                 duration={500}
@@ -41,6 +41,7 @@ export function Navbar() {
                 About Me
             </ScrollLink>
             <ScrollLink
+                containerId="content"
                 to="resume"
                 spy={true}
                 duration={500}
@@ -49,6 +50,7 @@ export function Navbar() {
                 Resume
             </ScrollLink>
             <ScrollLink
+                containerId="content"
                 to="contact"
                 spy={true}
                 duration={500}

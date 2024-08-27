@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export function ContactMe() {
 
     return (
-        <section className='ContactMe-Section'>
+        <section id='contact' className='ContactMe-Section'>
           {/*<MyForm/>*/}
               <ul className="social-link-Contact">
                     {data.socialData.map((element, index) => (
@@ -23,7 +23,7 @@ export function ContactMe() {
                     ))}
                 </ul>
             <p className='gradient-text Contact-Me'>Want to know more about me, tell me about your project or just to 
-                say hello? <a>Drop me a line</a> and I'll get back as soon as possible.</p>
+                say hello? <a href="mailto:mnsoqar1@gmail.com">Drop me a line</a> and I'll get back as soon as possible.</p>
                 <hr />
                 <div className='contact-info'>
                     <div className='contact'>

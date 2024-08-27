@@ -83,7 +83,7 @@ export function About() {
                 <div className='personal'>
                     <div className='about-cv'>
                         <p>{personalInfo.aboutnme}</p>
-                        <a href='https://drive.google.com/file/d/1q0cG1bVah8QrlUMPj5JTfZyf2XW1WvWt/view?usp=drive_link' target="_blank" className="header-cta" download>
+                        <a href='https://drive.google.com/file/d/1EKg33qmJkd1hYSrPtCuYi5iSw-aeSTvD/view?usp=sharing' target="_blank" className="header-cta" download>
                             Download CV <img src={data.Images.star} alt="Star" />
                         </a>
                     </div>

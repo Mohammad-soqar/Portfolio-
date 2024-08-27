@@ -3,7 +3,7 @@ import '../css/ProjectCard.css';
 
 export function ProjectCard({ id, title, description, imageUrl, techStack }) {
     // Construct the URL for the project details page
-    const projectUrl = `/#/project/${id}`;
+    const projectUrl = `/Portfolio-/#/project/${id}`;
 
     return (
         <a href={projectUrl} target="_blank" rel="noopener noreferrer" className="project-card2">

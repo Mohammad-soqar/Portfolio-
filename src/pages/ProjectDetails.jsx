@@ -17,7 +17,6 @@ export function ProjectDetails() {
     return (
         <div className='project-details-background'>
             <div className="project-details-container">
-                <a href={projectUrl} rel="noopener noreferrer" className="project-card2">Back</a>
 
                 <div className='projects-header-details'>
                     <header className="project-header">

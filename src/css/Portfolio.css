@@ -33,9 +33,11 @@
 @media (max-width: 1350px) {
     .portfolio {
         align-items: center;
+        gap:1rem;
     }
 
     .portfolio-tag {
         margin-right: 50% !important;
+       
     }
 }

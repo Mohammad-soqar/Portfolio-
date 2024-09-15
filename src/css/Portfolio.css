@@ -17,6 +17,17 @@
     padding-bottom: 2rem;
 }
 
+@media (max-width: 768px) {
+    .view-more-button {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .view-more-button {
+        display: none;
+    }
+}
 
 @media (min-width: 1350px) {
 

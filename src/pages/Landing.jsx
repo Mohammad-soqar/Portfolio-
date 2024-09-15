@@ -7,7 +7,10 @@ import { ContactMe } from "../components/ContactMe";
 
 export function Landing() {
   
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
+      
     return (
         <>
 

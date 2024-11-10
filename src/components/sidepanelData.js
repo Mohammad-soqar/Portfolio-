@@ -1,6 +1,6 @@
 export const data = {
   Images: {
-    profilePic: "./images/MohammadSoqar.png",
+    profilePic: "./images/MohammadAhmad.png",
     star: "./images/Star.png",
     //background
     WebsiteBackground: "./images/Background.png",
@@ -180,27 +180,27 @@ export const data = {
     {
       icon: "./images/SocialMedia/Instagram.png",
       icon_big: "./images/SocialMedia/Instagram-big.png",
-      link: "https://www.instagram.com/mohammad_soqar/"
+      link: "https://www.instagram.com/mohammad_Ahmad/"
     },
     {
       icon: "./images/SocialMedia/Github.png",
       icon_big: "./images/SocialMedia/Github-big.png",
-      link: "https://github.com/Mohammad-soqar"
+      link: "https://github.com/Mohammad-Ahmad"
     },
     {
       icon: "./images/SocialMedia/LinkedIn.png",
       icon_big: "./images/SocialMedia/LinkedIn-big.png",
-      link: "https://www.linkedin.com/in/mohammad-soqar-ahmad/"
+      link: "https://www.linkedin.com/in/mohammad-Ahmad-ahmad/"
     },
     {
       icon: "./images/SocialMedia/YouTube.png",
       icon_big: "./images/SocialMedia/YouTube-big.png",
-      link: "https://www.youtube.com/@mohammadsoqar2809/featured"
+      link: "https://www.youtube.com/@mohammadAhmad2809/featured"
     },
     {
       icon: "./images/SocialMedia/Behance.png",
       icon_big: "./images/SocialMedia/Behance-big.png",
-      link: "https://www.behance.net/mohammadsoqar"
+      link: "https://www.behance.net/mohammadAhmad"
     }
   ],
   aboutMe: {
@@ -210,9 +210,9 @@ export const data = {
       projectsDone: "10+",
     },
     personalInfo: {
-      name: "Mohammad Soqar",
+      name: "Mohammad Ahmad",
       phone: "+905388782103",
-      email: "mnsoqar1@gmail.com",
+      email: "mnAhmad1@gmail.com",
       aboutnme: "I'm a software engineer with a focus on web and mobile development, UI/UX design, and AI. I've worked on projects like LocaLink, a social media platform that enhances community engagement, and Zoom Tourism, a CRM system for the travel industry. Right now, I'm working on an AI project in the healthcare sector, aimed at improving patient outcomes through advanced data analysis. I'm passionate about using technology to drive innovation and make a real impact. I'm skilled in Flutter, React, Node.js, and ASP.NET, and I love taking on projects that push the boundaries of what's possible in software engineering.",
       location: "Istanbul, Turkey",
       cvLink: "https://drive.google.com/file/d/1q0cG1bVah8QrlUMPj5JTfZyf2XW1WvWt/view?usp=drive_link",

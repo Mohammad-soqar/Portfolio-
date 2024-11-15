@@ -21,6 +21,7 @@ export const data = {
     react: "./images/tech/React.png",//
     js: "./images/tech/JS.png",//
     figma: "./images/tech/Figma.png",//
+    Google_cloud: "./images/tech/GoogleCloud.png",//
     illustrator: "./images/tech/illustrator.png",//
     photoshop: "./images/tech/PhotoShop.png",//
     flutter2: "./images/tech/Flutter2.png",//
@@ -33,6 +34,7 @@ export const data = {
     aspnet2: "./images/tech/Aspnet2.png",//
     react2: "./images/tech/React2.png",//
     figma2: "./images/tech/Figma2.png",//
+    Google_cloud2: "./images/tech/GoogleCloud2.png",//
     SqlServer: "./images/tech/sqlserver.png",//
 
   },
@@ -44,7 +46,7 @@ export const data = {
       title: 'LocaLink',
       description: 'LocaLink is a dynamic social media platform focused on community engagement. It enables users to connect, share content, and interact with their friends and followers. The application includes features like posting updates, multimedia sharing, and community-driven discussions, all within a safe and interactive environment.',
       shortDescription: 'A Social Media App',
-      techStack: ['flutter', 'dart', 'firebase', "figma"],
+      techStack: ['flutter', 'dart', 'firebase','nodejs','Google_cloud' ],
       platforms: "Android, iOS, Web",
       category: "Mobile App, Flutter",
       client: "Graduation Project",

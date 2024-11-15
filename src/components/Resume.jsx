@@ -95,6 +95,7 @@ export function Resume() {
     ];
     const tools = [
         { title: "Flutter", picture: data.Images.flutter2 },
+        { title: "Google Cloud", picture: data.Images.Google_cloud2 },
         { title: "Dart", picture: data.Images.dart2 },    
         { title: "React", picture: data.Images.react2 },
         { title: "Node.js", picture: data.Images.nodejs },

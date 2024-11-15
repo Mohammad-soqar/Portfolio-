@@ -12,7 +12,7 @@ export function About() {
             title: "Mobile Development",
             tags: ["MobileDev", "Android", "iOS"],
             description: "Building cross-platform mobile apps that work seamlessly on both Android and iOS.",
-            techStack: [data.Images.flutter, data.Images.dart, data.Images.firebase]
+            techStack: [data.Images.flutter,  data.Images.firebase, data.Images.Google_cloud]
         },
         {
             title: "Front-End",

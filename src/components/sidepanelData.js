@@ -42,6 +42,24 @@ export const data = {
   projects: [
     {
 
+      id: 'plantai',
+      title: 'Plant AI',
+      description: 'Plant AI is an innovative mobile application that uses artificial intelligence to provide plant care insights. The app identifies plant species, offers care recommendations, and tracks growth progress, making it an essential tool for plant enthusiasts and gardeners.',
+      shortDescription: 'A Plant Care App',
+      techStack: ['flutter', 'dart', 'firebase','nodejs','Google_cloud' ],
+      platforms: "Android, iOS",
+      category: "Mobile App, Flutter",
+      client: "Personal Project",
+      date: "01/2025 - Present",
+      color: "rgba(42, 248, 155, 0.2)",
+      summary: "Plant AI leverages AI technology to deliver personalized plant care recommendations and growth tracking features. By identifying plant species and providing tailored care instructions, the app enhances the gardening experience for users, helping them nurture their plants effectively.",
+      projectBenefits: "Plant AI simplifies plant care by offering personalized recommendations and growth tracking features. Users can easily identify plant species, receive care instructions, and monitor their plants' progress, making it an essential tool for plant enthusiasts and gardeners.",
+      images: ['./images/projects/plantai.png', './images/projects/plantai-2.png', ''],
+      projectLink: 'https://github.com/Mohammad-soqar/Plant_AI',
+    },
+   
+    {
+
       id: 'locaLink',
       title: 'LocaLink',
       description: 'LocaLink is a dynamic social media platform focused on community engagement. It enables users to connect, share content, and interact with their friends and followers. The application includes features like posting updates, multimedia sharing, and community-driven discussions, all within a safe and interactive environment.',
@@ -92,6 +110,23 @@ export const data = {
         "./images/projects/Reson8-3.png"
       ],
       projectLink: "https://my-portfolio.com"
+    },
+    {
+
+      id: 'raMonitoring',
+      title: 'RA Monitoring System',
+      description: 'The RA Monitoring System is a healthcare solution that enables real-time monitoring of patients in critical care units. It provides vital sign tracking, alerts for abnormal readings, and data visualization tools for healthcare professionals, ensuring timely intervention and patient safety.',
+      shortDescription: 'A Healthcare Monitoring System',
+      techStack: ['flutter', 'dart', 'firebase','nodejs','Google_cloud' ],
+      platforms: "Android, iOS, Web",
+      category: "Mobile App, Flutter",
+      client: "Graduation Project",
+      date: "12/2024 - Present",
+      color: "rgba(66, 0, 151, 0.2)",
+      summary: "The RA Monitoring System offers real-time monitoring of patients in critical care units, providing healthcare professionals with vital sign data, alerts for abnormal readings, and visualization tools. This system ensures timely intervention and patient safety, enhancing the quality of care in healthcare settings.",
+      projectBenefits: "The RA Monitoring System enhances patient care by providing real-time monitoring and alerts for critical health indicators. Healthcare professionals can track vital signs, receive alerts for abnormal readings, and visualize patient data, enabling them to respond promptly to changes in patient condition.",
+      images: ['./images/projects/rmts.png', './images/projects/LocaLink-2.png', './images/projects/LocaLink-3.png'],
+      projectLink: 'https://github.com/Mohammad-soqar/rmts',
     },
     {
       id: "zm",
@@ -207,15 +242,15 @@ export const data = {
   ],
   aboutMe: {
     metrics: {
-      githubContributions: "600+",
-      experienceYears: "3+",
-      projectsDone: "10+",
+      githubContributions: "800+",
+      experienceYears: "4+",
+      projectsDone: "13+",
     },
     personalInfo: {
       name: "Mohammad Ahmad",
       phone: "+905388782103",
       email: "mnsoqar1@gmail.com",
-      aboutnme: "I'm a software engineer with a focus on web and mobile development, UI/UX design, and AI. I've worked on projects like LocaLink, a social media platform that enhances community engagement, and Zoom Tourism, a CRM system for the travel industry. Right now, I'm working on an AI project in the healthcare sector, aimed at improving patient outcomes through advanced data analysis. I'm passionate about using technology to drive innovation and make a real impact. I'm skilled in Flutter, React, Node.js, and ASP.NET, and I love taking on projects that push the boundaries of what's possible in software engineering.",
+      aboutnme: "Hi, I’m Mohammad Soqar, a versatile Software Engineer with a strong focus on mobile development and full-stack solutions. I specialize in building intuitive applications using Flutter, Firebase, and modern web technologies. My current projects include the RA Monitoring System, a healthcare solution leveraging real-time monitoring, and the Plant AI App, which uses AI to provide plant care insights—both of which are under development. Notable completed projects include LocaLink, a location-based social media app, an Internship Management System for Üsküdar University, and a CRM system for Zoom Property, enhancing operations and user engagement. I’m passionate about creating scalable and impactful solutions that solve real-world challenges through clean code and thoughtful design.",
       location: "Istanbul, Turkey",
       cvLink: "https://drive.google.com/file/d/1q0cG1bVah8QrlUMPj5JTfZyf2XW1WvWt/view?usp=drive_link",
       catchyphrase: "Converting complex challenges into clear, intuitive designs.",

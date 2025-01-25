@@ -125,7 +125,7 @@ export const data = {
       color: "rgba(66, 0, 151, 0.2)",
       summary: "The RA Monitoring System offers real-time monitoring of patients in critical care units, providing healthcare professionals with vital sign data, alerts for abnormal readings, and visualization tools. This system ensures timely intervention and patient safety, enhancing the quality of care in healthcare settings.",
       projectBenefits: "The RA Monitoring System enhances patient care by providing real-time monitoring and alerts for critical health indicators. Healthcare professionals can track vital signs, receive alerts for abnormal readings, and visualize patient data, enabling them to respond promptly to changes in patient condition.",
-      images: ['./images/projects/rmts.png', './images/projects/LocaLink-2.png', './images/projects/LocaLink-3.png'],
+      images: ['./images/projects/rmts.png', '', ''],
       projectLink: 'https://github.com/Mohammad-soqar/rmts',
     },
     {

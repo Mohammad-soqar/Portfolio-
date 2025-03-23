@@ -252,7 +252,7 @@ export const data = {
       email: "mnsoqar1@gmail.com",
       aboutnme: "Hi, I’m Mohammad Soqar, a versatile Software Engineer with a strong focus on mobile development and full-stack solutions. I specialize in building intuitive applications using Flutter, Firebase, and modern web technologies. My current projects include the RA Monitoring System, a healthcare solution leveraging real-time monitoring, and the Plant AI App, which uses AI to provide plant care insights—both of which are under development. Notable completed projects include LocaLink, a location-based social media app, an Internship Management System for Üsküdar University, and a CRM system for Zoom Property, enhancing operations and user engagement. I’m passionate about creating scalable and impactful solutions that solve real-world challenges through clean code and thoughtful design.",
       location: "Istanbul, Turkey",
-      cvLink: "https://drive.google.com/file/d/1py-daxz0T2jtNjYAdk9fx-6_lgVXs0uv/view?usp=sharing",
+      cvLink: "https://drive.google.com/file/d/1NlVE4C3Q2QfopXpnpCRbRSEJTHbHVaqI/view?usp=sharing",
       catchyphrase: "Converting complex challenges into clear, intuitive designs.",
     }
   }

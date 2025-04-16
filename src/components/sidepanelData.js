@@ -242,9 +242,9 @@ export const data = {
   ],
   aboutMe: {
     metrics: {
-      githubContributions: "800+",
+      githubContributions: "1k+",
       experienceYears: "4+",
-      projectsDone: "13+",
+      projectsDone: "14+",
     },
     personalInfo: {
       name: "Mohammad Ahmad",

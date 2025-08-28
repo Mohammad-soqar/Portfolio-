@@ -16,11 +16,14 @@ export const data = {
     git: "./images/tech/Git.png",//
     github: "./images/tech/Github.png",//
     nodejs: "./images/tech/Nodejs.png",//
+    nextjs: "./images/tech/nextjs.png",//
     csharp: "./images/tech/Cs.png",//
     aspnet: "./images/tech/Aspnet.png",//
     react: "./images/tech/React.png",//
+    aws: "./images/tech/aws.png",//
     js: "./images/tech/JS.png",//
     figma: "./images/tech/Figma.png",//
+    ts: "./images/tech/ts.png",//
     Google_cloud: "./images/tech/GoogleCloud.png",//
     illustrator: "./images/tech/illustrator.png",//
     photoshop: "./images/tech/PhotoShop.png",//
@@ -36,32 +39,18 @@ export const data = {
     figma2: "./images/tech/Figma2.png",//
     Google_cloud2: "./images/tech/GoogleCloud2.png",//
     SqlServer: "./images/tech/sqlserver.png",//
+    pgsql: "./images/tech/pgsql.png",//
 
   },
 
   projects: [
-    {
-
-      id: 'plantai',
-      title: 'Plant AI',
-      description: 'Plant AI is an innovative mobile application that uses artificial intelligence to provide plant care insights. The app identifies plant species, offers care recommendations, and tracks growth progress, making it an essential tool for plant enthusiasts and gardeners.',
-      shortDescription: 'A Plant Care App',
-      techStack: ['flutter', 'dart', 'firebase','nodejs','Google_cloud' ],
-      platforms: "Android, iOS",
-      category: "Mobile App, Flutter",
-      client: "Personal Project",
-      date: "01/2025 - Present",
-      color: "rgba(42, 248, 155, 0.2)",
-      summary: "Plant AI leverages AI technology to deliver personalized plant care recommendations and growth tracking features. By identifying plant species and providing tailored care instructions, the app enhances the gardening experience for users, helping them nurture their plants effectively.",
-      projectBenefits: "Plant AI simplifies plant care by offering personalized recommendations and growth tracking features. Users can easily identify plant species, receive care instructions, and monitor their plants' progress, making it an essential tool for plant enthusiasts and gardeners.",
-      images: ['./images/projects/plantai.png', './images/projects/plantai-2.png', ''],
-      projectLink: 'https://github.com/Mohammad-soqar/Plant_AI',
-    },
+   
    
     {
 
       id: 'locaLink',
       title: 'LocaLink',
+      types: ["Mobile", "UI/UX"],
       description: 'LocaLink is a dynamic social media platform focused on community engagement. It enables users to connect, share content, and interact with their friends and followers. The application includes features like posting updates, multimedia sharing, and community-driven discussions, all within a safe and interactive environment.',
       shortDescription: 'A Social Media App',
       techStack: ['flutter', 'dart', 'firebase','nodejs','Google_cloud' ],
@@ -78,6 +67,7 @@ export const data = {
     {
       id: "ztw",
       title: "Zoom Tourism",
+      types: ["Web", "UI/UX"],
       description: "Zoom Tourism features a CRM system and website designed for travel and tourism management. It includes functionalities for managing car rentals, trip bookings, and content management, along with a support page for developers.",
       shortDescription: "A Tourism Management System",
       techStack: ["aspnet", "SqlServer", "figma"],
@@ -94,6 +84,7 @@ export const data = {
     {
       id: "Reson8",
       title: "Reson8 Media Website Design",
+      type:"UI/UX",
       description: "A complete UI/UX design for Reson8 Media, a cutting-edge media company specializing in channel branding, real-time graphics, template building, and more. The design showcases a modern, engaging, and visually appealing layout that reflects the innovative nature of the services they provide.",
       shortDescription: "UI/UX design for Reson8 Media's website",
       techStack: ["figma", "illustrator"],
@@ -114,7 +105,8 @@ export const data = {
     {
 
       id: 'raMonitoring',
-      title: 'RA Monitoring System',
+      title: 'RMTS (Teknofest Project)',
+      types: ["Mobile", "Web", "UI/UX"],
       description: 'The RA Monitoring System is a healthcare solution that enables real-time monitoring of patients in critical care units. It provides vital sign tracking, alerts for abnormal readings, and data visualization tools for healthcare professionals, ensuring timely intervention and patient safety.',
       shortDescription: 'A Healthcare Monitoring System',
       techStack: ['flutter', 'dart', 'firebase','nodejs','Google_cloud' ],
@@ -131,6 +123,7 @@ export const data = {
     {
       id: "zm",
       title: "Zoom Medical",
+      types: ["Web", "UI/UX"],
       description: "Zoom Medical is a comprehensive beauty and cosmetics booking system integrated with a CRM. It allows users to schedule beauty treatments, view detailed service descriptions, and manage their appointments through a user-friendly web interface.",
       shortDescription: "A beauty and cosmetics booking system integrated with CRM functionalities.",
       techStack: ["react", "nodejs", "mongodb"],
@@ -147,6 +140,7 @@ export const data = {
     {
       id: "Codyle",
       title: "Codyle",
+      types: ["Web", "UI/UX"],
       description: "Codyle is a comprehensive platform developed for managing and organizing tech events within a university setting. It provides tools for event creation, participant registration, and feedback collection, facilitating streamlined management of tech-focused activities and fostering community engagement.",
       shortDescription: "A tech-focused university club platform for organizing and managing tech events.",
       techStack: ["react", "nodejs", "mongodb"],
@@ -160,7 +154,7 @@ export const data = {
       images: ["./images/projects/Codyle.png", "./images/projects/Codyle-2.png", "./images/projects/Codyle-3.png"],
       projectLink: "https://my-portfolio.com"
     },
-    {
+   /*  {
       id: "IAS",
       title: "Internship Automation System",
       description: "The Internship Automation System is a comprehensive tool developed for automating the entire internship process at the university. It manages paperwork, track internship progress, and streamline communication between students and administration, eliminating the need for physical visits to the university.",
@@ -209,7 +203,7 @@ export const data = {
       images: ["./images/projects/Onifood.png", "./images/projects/Onifood-2.png", "./images/projects/Onifood-3.png"],
       projectLink: "https://my-portfolio.com"
     },
-
+ */
     // Add more projects as needed
   ],
 

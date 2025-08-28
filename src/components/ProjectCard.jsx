@@ -1,7 +1,7 @@
 import React from 'react';
 import '../css/ProjectCard.css';
 
-export function ProjectCard({ id, title, description, imageUrl, techStack }) {
+export function ProjectCard({ id, title, description, imageUrl, techStack , projectLink }) {
     // Construct the URL for the project details page
     const projectUrl = `/Portfolio-/#/project/${id}`;
 

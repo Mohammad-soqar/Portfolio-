@@ -19,8 +19,8 @@ export function Landing() {
                 
                 <Header />
                 <Portfolio  />
-                <About  />
                 <Resume />
+                <About  />
                 <ContactMe/>
               
             </div>

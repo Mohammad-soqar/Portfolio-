@@ -9,22 +9,17 @@ export function About() {
 
     const skills = [
         {
+            title: "Full-Stack Development",
+            tags: ["Frontend", "WebDesign","Backend", "ServerSide"],
+            description: "Building robust, user-friendly web applications with seamless front-end experiences and powerful back-end systems.",
+            techStack: [data.Images.nextjs, data.Images.aws,data.Images.react, data.Images.ts,data.Images.nodejs, data.Images.aspnet, ]
+        },
+       
+        {
             title: "Mobile Development",
             tags: ["MobileDev", "Android", "iOS"],
             description: "Building cross-platform mobile apps that work seamlessly on both Android and iOS.",
             techStack: [data.Images.flutter,  data.Images.firebase, data.Images.Google_cloud]
-        },
-        {
-            title: "Front-End",
-            tags: ["Frontend", "WebDesign"],
-            description: "Creating engaging, user-friendly interfaces for web applications.",
-            techStack: [data.Images.react, data.Images.js]
-        },
-        {
-            title: "Back-End",
-            tags: ["Backend", "ServerSide"],
-            description: "Developing robust server-side logic and managing databases for scalable applications.",
-            techStack: [data.Images.nodejs, data.Images.aspnet, data.Images.csharp, data.Images.firebase]
         },
         {
             title: "Artificial Intelligence",
@@ -42,7 +37,7 @@ export function About() {
             title: "Databases",
             tags: ["Databases", "Data Storage"],
             description: "Managing and organizing data storage solutions for applications.",
-            techStack: [data.Images.firebase, data.Images.mysql, data.Images.mongodb]
+            techStack: [data.Images.firebase, data.Images.pgsql, data.Images.mongodb]
         },
         {
             title: "Version Control Tools",

@@ -82,76 +82,45 @@ export function Resume() {
   // 🔧 FIX: make this a flat array (remove the extra [])
   const tableRowExp = [
     {
-      company: "Ticket Travel and Tourism",
-      role: "Full-Stack Developer (Remote)",
-      location: "Muscat, Oman",
-      date: "Apr 2025 – Present",
+      company: "Ticket Travel & Tourism",
+      role: "Full-Stack Developer",
+      location: "Remote",
+      date: "Apr 2025 – Oct 2025",
       description: [
-        "Architecting and developing a full-scale, self-service tourism platform covering package creation, client booking, CRM, and ERP systems.",
-        "Leading end-to-end UI/UX design and full-stack implementation using Next.js, Node.js, Prisma.",
-        "Building a scalable multi-tenant system on AWS for white-labeled deployments.",
+        "Architected a self-service tourism platform spanning packages, bookings, CRM, and ERP.",
+        "Led UI/UX and full-stack delivery with **Next.js**, **Node.js**, and **Prisma**.",
+        "Built AWS multi-tenant foundations ready for white-label rollouts.",
       ],
     },
     {
-      company: "JUSTICE4.0",
-      role: "Software Development & AI Intern (LegalTech) (Remote)",
-      location: "Helsinki, Finland",
-      date: "Aug 2025 – Oct 2025",
+      company: "Justice 4.0",
+      role: "Software & AI Developer",
+      location: "Remote",
+      date: "Aug 2025 – Present",
       description: [
-        "Developing an AI-powered legal chatbot leveraging open-source models (Ollama, Mistral) with Retrieval-Augmented Generation (RAG).",
-        "Implementing data ingestion, embedding, and vector search pipelines for accurate and scalable legal queries.",
+        "Shipped SnowLEX, a Retrieval-Augmented assistant using **Qdrant**, **Ollama Mistral**, and **FastAPI**.",
+        "Deployed Google Cloud backends with Firebase Auth, audit logging, and monitoring.",
+      ],
+    },
+    {
+      company: "Tigflo",
+      role: "Software Architect & UI/UX Designer",
+      location: "Remote",
+      date: "Dec 2024 – Present",
+      description: [
+        "Review code quality across **Next.js**, **Flutter**, and **Node.js** repositories.",
+        "Maintained 500+ reusable components with light/dark themes and usage guidelines.",
+        "Delivered 60+ dashboards, 50+ mobile screens, and 30+ web screens.",
       ],
     },
     {
       company: "Zoom Property",
-      role: "Software Development Engineering Intern",
+      role: "Software Development Intern",
       location: "Istanbul, Turkey",
       date: "Aug 2023 – Nov 2023",
       description: [
-        "Built a CRM system for the tourism branch, managing bookings, transportation, and customer lifecycle.",
-        "Integrated real-time updates, task checklists, and automated driver reminders to improve efficiency.",
-        "Enhanced customer satisfaction and team coordination through system improvements.",
-      ],
-    },
-    {
-      company: "Reson8 Media",
-      role: "UI/UX Designer (Freelance)",
-      location: "Istanbul, Turkey",
-      date: "Mar 2024 – May 2024",
-      description: [
-        "Designed and delivered a complete responsive website aligned with the company’s brand identity.",
-        "Created 16+ screens covering full desktop and mobile flows, ensuring accessibility and usability.",
-        "Contributed to a live production website for a media company with a global presence (Canada, Turkey, Qatar, UAE).",
-      ],
-    },
-    {
-      company: "DragLab",
-      role: "UI/UX Designer (Freelance, Remote)",
-      location: "Eschborn, Germany",
-      date: "Mar 2025 – May 2025",
-      description: [
-        "Designed and launched a responsive, Apple-inspired website showcasing DragLab’s product line.",
-        "Produced 34+ screens across web and mobile, ensuring a modern and intuitive user experience.",
-      ],
-    },
-    {
-      company: "TigFlo (Medflo Project)",
-      role: "UI/UX Designer (Freelance, Remote)",
-      location: "Sharjah, UAE",
-      date: "Dec 2024 – Present",
-      description: [
-        "Designing a large-scale, multi-phase healthcare system (web, mobile, dashboards) supporting light and dark modes.",
-        "Built and maintained 500+ reusable components across multiple themes for scalability.",
-        "Delivered 60–70+ dashboard screens, 50+ mobile screens, and 30+ web screens.",
-      ],
-    },
-    {
-      company: "Zoom Dental",
-      role: "Software Engineer (Freelance)",
-      location: "Remote",
-      date: "Jan 2024",
-      description: [
-        "Developed a fully responsive website tailored to client needs, enhancing online presence.",
+        "Built a tourism CRM covering bookings, transportation, and partner coordination.",
+        "Automated driver reminders and daily task flows to keep teams aligned.",
       ],
     },
   ];

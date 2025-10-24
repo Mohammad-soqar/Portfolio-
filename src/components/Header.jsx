@@ -35,7 +35,7 @@ export function Header() {
                         My Work
                         <img src={data.Images.star} alt="" />
                     </ScrollLink>
-                    <a href="https://drive.google.com/file/d/1NlVE4C3Q2QfopXpnpCRbRSEJTHbHVaqI/view?usp=sharing" className="header-cta" target="_blank" rel="noopener noreferrer">
+                    <a href="https://drive.google.com/file/d/1B26dn1iOQZxrNHsEaXNI_oM7pbvPlKcY/view?usp=sharing" className="header-cta" target="_blank" rel="noopener noreferrer">
                         Download CV <img src={data.Images.star} alt="" />
                     </a>
                 </div>

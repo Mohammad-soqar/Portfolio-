@@ -4,7 +4,7 @@ export interface Experience {
     role: string;
     location: string;
     date: string;
-    description: string[];
+    description: string; // Markdown content
     createdAt?: string;
 }
 
@@ -18,7 +18,7 @@ export interface Project {
     title: string;
     shortDescription: string;
     longDescription?: string;
-    features?: string[];
+    features?: string; // Markdown content
     challenge?: string;
     results?: string;
     impact?: string; // Quantifiable impact
@@ -28,6 +28,7 @@ export interface Project {
     images: string[];
     logo?: string;
     homeImage?: string;
+    thumbnail?: string; // Movie-card thumbnail image
     category?: string;
     createdAt?: string;
 }

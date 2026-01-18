@@ -219,7 +219,7 @@ export default function Home() {
                 <p style={{ opacity: 0.6, marginBottom: '1rem' }}>{exp.location}</p>
                 <div className="exp-markdown" style={{ marginTop: '1rem' }}>
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                    {exp.description?.join("\n") || ""}
+                    {Array.isArray(exp.description) ? exp.description.join("\n") : (exp.description || "")}
                   </ReactMarkdown>
                 </div>
               </motion.div>

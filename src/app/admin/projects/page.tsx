@@ -24,6 +24,7 @@ export default function ProjectsAdmin() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const logoInputRef = useRef<HTMLInputElement>(null);
   const homeImgInputRef = useRef<HTMLInputElement>(null);
+  const thumbnailInputRef = useRef<HTMLInputElement>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // Used as "isFormOpen" now
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -41,6 +42,7 @@ export default function ProjectsAdmin() {
     images: [] as string[],
     logo: "",
     homeImage: "",
+    thumbnail: "",
     journey: [] as { title: string, description: string }[]
   });
   const [uploading, setUploading] = useState(false);
@@ -151,6 +153,37 @@ export default function ProjectsAdmin() {
     }
   };
 
+  const handleThumbnailUpload = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+
+    const options = {
+      maxSizeMB: 0.5,
+      maxWidthOrHeight: 1280,
+      useWebWorker: true
+    };
+
+    const metadata: SettableMetadata = {
+      cacheControl: 'public,max-age=31536000',
+    };
+
+    try {
+      const compressedFile = await imageCompression(file, options);
+      const storageRef = ref(storage, `thumbnails/${Date.now()}_${file.name}`);
+      await uploadBytes(storageRef, compressedFile, metadata);
+      const url = await getDownloadURL(storageRef);
+      setFormData(prev => ({ ...prev, thumbnail: url }));
+      alert("Thumbnail uploaded!");
+    } catch (err: any) {
+      console.error("Thumbnail Upload Error:", err);
+      alert(`Thumbnail upload failed: ${err.message}`);
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const removeImage = (index: number) => {
     setFormData(prev => ({
       ...prev,
@@ -184,7 +217,7 @@ export default function ProjectsAdmin() {
       title: formData.title,
       shortDescription: formData.shortDescription,
       longDescription: formData.longDescription,
-      features: formData.features.split("\n").filter(t => t.trim()),
+      features: formData.features, // Store as markdown string
       challenge: formData.challenge,
       results: formData.results,
       impact: formData.impact,
@@ -193,7 +226,8 @@ export default function ProjectsAdmin() {
       projectLink: formData.projectLink,
       images: formData.images,
       logo: formData.logo,
-      homeImage: formData.homeImage
+      homeImage: formData.homeImage,
+      thumbnail: formData.thumbnail
     };
 
     if (editingId) {
@@ -211,7 +245,7 @@ export default function ProjectsAdmin() {
       title: p.title,
       shortDescription: p.shortDescription || "",
       longDescription: p.longDescription || "",
-      features: p.features?.join("\n") || "",
+      features: Array.isArray(p.features) ? p.features.join("\n") : (p.features || ""),
       challenge: p.challenge || "",
       results: p.results || "",
       impact: p.impact || "",
@@ -220,6 +254,7 @@ export default function ProjectsAdmin() {
       images: p.images || [],
       logo: p.logo || "",
       homeImage: p.homeImage || "",
+      thumbnail: p.thumbnail || "",
       journey: p.journey || []
     });
     setIsModalOpen(true);
@@ -242,6 +277,7 @@ export default function ProjectsAdmin() {
       images: [],
       logo: "",
       homeImage: "",
+      thumbnail: "",
       journey: []
     });
   };
@@ -306,7 +342,7 @@ export default function ProjectsAdmin() {
                       onClick={() => logoInputRef.current?.click()}
                       className="w-24 h-24 rounded-2xl bg-black border-2 border-dashed border-white/10 hover:border-[#7628E5]/50 flex items-center justify-center cursor-pointer transition-all overflow-hidden relative group"
                     >
-                      {formData.logo ? <Image src={formData.logo} fill className="object-contain p-4 transition-transform group-hover:scale-110" alt="Logo" /> : <Plus size={32} className="opacity-20" />}
+                      {formData.logo ? <Image src={formData.logo} fill className="object-contain rounded-2xl p-4 rounded-2xl rounded-[32px] transition-transform group-hover:scale-110" alt="Logo" /> : <Plus size={32} className="opacity-20" />}
                       {uploading && <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm"><div className="w-6 h-6 border-2 border-[#7628E5] border-t-transparent rounded-full animate-spin"></div></div>}
                     </div>
                     <div>
@@ -362,6 +398,35 @@ export default function ProjectsAdmin() {
                     <input type="file" ref={homeImgInputRef} onChange={handleHomeImageUpload} hidden />
                   </div>
 
+                  {/* Card Thumbnail Upload */}
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">Card Thumbnail (Movie-Style)</label>
+                    <div 
+                      onClick={() => thumbnailInputRef.current?.click()}
+                      className="h-48 rounded-[32px] border-2 border-dashed border-white/10 hover:border-[#7628E5]/50 bg-white/5 flex flex-col items-center justify-center cursor-pointer overflow-hidden transition-all relative group"
+                      style={{ backgroundImage: formData.thumbnail ? `url(${formData.thumbnail})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center' }}
+                    >
+                      {!formData.thumbnail && (
+                        <>
+                          <Upload size={28} className="opacity-20 mb-3 group-hover:scale-110 transition-transform" />
+                          <span className="text-sm font-bold text-white/20">UPLOAD CARD THUMBNAIL</span>
+                          <span className="text-[10px] text-white/10 mt-1">This appears on project cards</span>
+                        </>
+                      )}
+                      {uploading && <div className="absolute inset-0 bg-black/60 flex items-center justify-center backdrop-blur-sm"><div className="w-10 h-10 border-4 border-[#7628E5] border-t-transparent rounded-full animate-spin"></div></div>}
+                    </div>
+                    {formData.thumbnail && (
+                      <button 
+                        type="button" 
+                        onClick={() => setFormData(prev => ({ ...prev, thumbnail: '' }))}
+                        className="text-[10px] font-bold text-red-400 hover:text-red-300 ml-4"
+                      >
+                        Remove Thumbnail
+                      </button>
+                    )}
+                    <input type="file" ref={thumbnailInputRef} onChange={handleThumbnailUpload} hidden />
+                  </div>
+
                   <div className="space-y-6">
                     <div className="flex justify-between items-center ml-4">
                       <label className="text-[10px] font-black text-white/30 uppercase tracking-widest">Project Gallery</label>
@@ -405,26 +470,28 @@ export default function ProjectsAdmin() {
                     <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">Long Description (Markdown)</label>
                     <textarea 
                       className="bg-white/5 border border-white/10 focus:border-[#7628E5] focus:ring-1 focus:ring-[#7628E5] rounded-[32px] px-8 py-6 text-white placeholder-white/20 outline-none transition-all font-medium text-sm leading-relaxed min-h-[300px]"
-                      placeholder="Write the background story..." 
+                      placeholder="Write the background story...
+
+Use # for headers, **bold**, *italic*, and - for bullets." 
                       value={formData.longDescription} 
                       onChange={e => setFormData({...formData, longDescription: e.target.value})} 
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-8">
                     <div className="flex flex-col gap-2">
-                      <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">The Challenge</label>
+                      <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">The Challenge (Markdown)</label>
                       <textarea 
                         className="bg-white/5 border border-white/10 focus:border-[#7628E5] focus:ring-1 focus:ring-[#7628E5] rounded-3xl px-6 py-5 text-white placeholder-white/20 outline-none transition-all font-medium text-sm min-h-[150px]"
-                        placeholder="What problem were we solving?" 
+                        placeholder="What problem were we solving?\n\nUse **bold**, *italic*, - bullets, and paragraphs" 
                         value={formData.challenge} 
                         onChange={e => setFormData({...formData, challenge: e.target.value})} 
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">The Impact</label>
+                      <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">The Impact (Markdown)</label>
                       <textarea 
                         className="bg-white/5 border border-white/10 focus:border-[#7628E5] focus:ring-1 focus:ring-[#7628E5] rounded-3xl px-6 py-5 text-white placeholder-white/20 outline-none transition-all font-medium text-sm min-h-[150px]"
-                        placeholder="Quantifiable results..." 
+                        placeholder="Quantifiable results...\n\nUse **bold**, *italic*, - bullets, and paragraphs" 
                         value={formData.impact} 
                         onChange={e => setFormData({...formData, impact: e.target.value})} 
                       />
@@ -467,7 +534,7 @@ export default function ProjectsAdmin() {
                         </div>
                         <textarea 
                           className="bg-black/20 border border-white/10 focus:border-[#7628E5] hover:border-white/20 w-full p-6 h-32 rounded-2xl outline-none transition-all text-sm font-medium leading-relaxed"
-                          placeholder="Detail what happened here..." 
+                          placeholder="Detail what happened here... (Supports Markdown)" 
                           value={phase.description}
                           onChange={(e) => updatePhase(index, 'description', e.target.value)}
                         />

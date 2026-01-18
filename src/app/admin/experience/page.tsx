@@ -43,7 +43,7 @@ export default function ExperienceAdmin() {
       role: formData.role,
       location: formData.location,
       date: formData.date,
-      description: formData.description.split("\n").filter(line => line.trim()),
+      description: formData.description, // Store as markdown string
     };
 
     try {
@@ -68,7 +68,7 @@ export default function ExperienceAdmin() {
       role: exp.role,
       location: exp.location,
       date: exp.date,
-      description: exp.description.join("\n")
+      description: Array.isArray(exp.description) ? exp.description.join("\n") : (exp.description || "")
     });
     setIsModalOpen(true);
   };

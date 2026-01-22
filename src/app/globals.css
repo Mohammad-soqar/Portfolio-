@@ -406,7 +406,7 @@ a {
 }
 
 .exp-date {
-  color: var(--accent-color);
+  color: var(--text-color);
   font-weight: 600;
 }
 
@@ -428,10 +428,10 @@ a {
 }
 
 .exp-markdown li::before {
-  content: "→";
+  content: "●";
   position: absolute;
   left: 0;
-  color: var(--accent-color);
+  color: var(--text-color);
   font-weight: bold;
 }
 

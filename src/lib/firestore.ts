@@ -23,10 +23,10 @@ export const getById = async <T>(col: string, id: string): Promise<T | null> => 
     return null;
 };
 
-export const getAll = async <T>(col: string, orderField?: string): Promise<T[]> => {
+export const getAll = async <T>(col: string, orderField?: string, direction: "asc" | "desc" = "desc"): Promise<T[]> => {
     let q = query(collection(db, col));
     if (orderField) {
-        q = query(q, orderBy(orderField, "desc"));
+        q = query(q, orderBy(orderField, direction));
     }
     const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as T));

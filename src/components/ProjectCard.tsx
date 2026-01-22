@@ -16,6 +16,12 @@ export default function ProjectCard({ project, idx = 0, isPreview = false }: Pro
   const { i18n } = useTranslation();
   const isRtl = i18n.language === 'ar';
 
+  // Helper to get localized content
+  const getLocalized = <T extends string | undefined>(content: T, contentAr: T): T => {
+    if (i18n.language === 'ar' && contentAr) return contentAr;
+    return content;
+  };
+
   // Use thumbnail, first image, or fallback
   const thumbnailImage = project.thumbnail || project.images?.[0] || null;
 
@@ -135,7 +141,7 @@ export default function ProjectCard({ project, idx = 0, isPreview = false }: Pro
           {/* Title and Meta */}
           <div className="flex-1 min-w-0">
             <h3 className="font-bold text-lg tracking-tight line-clamp-1 text-white group-hover:text-purple-300 transition-colors">
-              {project.title || "Untitled Project"}
+              {getLocalized(project.title, project.title_ar) || "Untitled Project"}
             </h3>
             <div className="flex items-center gap-3 mt-1">
               {/* Rating-like indicator */}
@@ -144,19 +150,14 @@ export default function ProjectCard({ project, idx = 0, isPreview = false }: Pro
                 <span className="text-[11px] text-white/60 font-medium">Featured</span>
               </div>
               {/* Year/Time indicator */}
-              <div className="flex items-center gap-1">
-                <Clock size={11} className="text-white/40" />
-                <span className="text-[11px] text-white/40">
-                  {project.createdAt ? new Date(project.createdAt).getFullYear() : new Date().getFullYear()}
-                </span>
-              </div>
+              
             </div>
           </div>
         </div>
 
         {/* Description */}
         <p className="text-white/50 text-sm line-clamp-2 leading-relaxed">
-          {project.shortDescription || "An innovative project pushing the boundaries of design and technology."}
+          {getLocalized(project.shortDescription, project.shortDescription_ar) || "An innovative project pushing the boundaries of design and technology."}
         </p>
 
         {/* Bottom Shimmer Line */}

@@ -5,7 +5,7 @@ import { Profile } from "@/types";
 import { storage } from "@/lib/firebase";
 import { ref, uploadBytes, getDownloadURL, SettableMetadata } from "firebase/storage";
 import imageCompression from 'browser-image-compression';
-import { Save, Upload, User, MapPin, Mail, Phone, Globe, Award, Briefcase, Github, Eye, Code } from "lucide-react";
+import { Save, Upload, User, MapPin, Mail, Phone, Globe, Award, Briefcase, Github, Eye, Code, Languages } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
@@ -15,14 +15,20 @@ export default function ProfileAdmin() {
   const [loading, setLoading] = useState(true);
   const [uploading, setUploading] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [editLang, setEditLang] = useState<'en' | 'ar'>('en');
   const [formData, setFormData] = useState<Profile>({
     name: "",
+    name_ar: "",
     role: "",
+    role_ar: "",
     email: "",
     phone: "",
     location: "",
+    location_ar: "",
     aboutMe: "",
+    aboutMe_ar: "",
     catchyPhrase: "",
+    catchyPhrase_ar: "",
     cvLink: "",
     profilePic: "",
     githubContributions: "",
@@ -108,8 +114,27 @@ export default function ProfileAdmin() {
   return (
     <div className="admin-page">
       <div className="header">
-        <h1>Personal Identity</h1>
-        <p>Manage how you appear to the world.</p>
+        <div>
+          <h1>Personal Identity</h1>
+          <p>Manage how you appear to the world.</p>
+        </div>
+        {/* Language Toggle */}
+        <div className="lang-toggle">
+          <button 
+            type="button" 
+            className={editLang === 'en' ? "active" : ""} 
+            onClick={() => setEditLang('en')}
+          >
+            <Languages size={14}/> EN
+          </button>
+          <button 
+            type="button" 
+            className={editLang === 'ar' ? "active" : ""} 
+            onClick={() => setEditLang('ar')}
+          >
+            AR <Languages size={14}/>
+          </button>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit} className="profile-form">
@@ -132,22 +157,45 @@ export default function ProfileAdmin() {
           </div>
 
           <div className="basic-info">
-            <div className="input-group">
-              <label>Full Name</label>
-              <input 
-                value={formData.name} 
-                onChange={e => setFormData({...formData, name: e.target.value})} 
-                required 
-              />
-            </div>
-            <div className="input-group">
-              <label>Professional Role</label>
-              <input 
-                value={formData.role} 
-                onChange={e => setFormData({...formData, role: e.target.value})} 
-                required 
-              />
-            </div>
+            {editLang === 'en' ? (
+              <>
+                <div className="input-group">
+                  <label>Full Name (English)</label>
+                  <input 
+                    value={formData.name} 
+                    onChange={e => setFormData({...formData, name: e.target.value})} 
+                    required 
+                  />
+                </div>
+                <div className="input-group">
+                  <label>Professional Role (English)</label>
+                  <input 
+                    value={formData.role} 
+                    onChange={e => setFormData({...formData, role: e.target.value})} 
+                    required 
+                  />
+                </div>
+              </>
+            ) : (
+              <div dir="rtl" className="rtl-group">
+                <div className="input-group">
+                  <label>الاسم الكامل (العربية)</label>
+                  <input 
+                    value={formData.name_ar || ''} 
+                    onChange={e => setFormData({...formData, name_ar: e.target.value})} 
+                    className="rtl-input"
+                  />
+                </div>
+                <div className="input-group">
+                  <label>المنصب المهني (العربية)</label>
+                  <input 
+                    value={formData.role_ar || ''} 
+                    onChange={e => setFormData({...formData, role_ar: e.target.value})} 
+                    className="rtl-input"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
@@ -163,8 +211,12 @@ export default function ProfileAdmin() {
               <input value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
             </div>
             <div className="input-field">
-              <label><MapPin size={14} /> Location</label>
-              <input value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} />
+              <label><MapPin size={14} /> {editLang === 'en' ? 'Location (English)' : 'الموقع (العربية)'}</label>
+              {editLang === 'en' ? (
+                <input value={formData.location} onChange={e => setFormData({...formData, location: e.target.value})} />
+              ) : (
+                <input value={formData.location_ar || ''} onChange={e => setFormData({...formData, location_ar: e.target.value})} className="rtl-input" dir="rtl" />
+              )}
             </div>
             <div className="input-field">
               <label><Globe size={14} /> CV Link (Google Drive/Dropbox)</label>
@@ -191,38 +243,73 @@ export default function ProfileAdmin() {
 
         <div className="form-section glass full-width">
           <div className="section-header-row">
-            <h3><User size={20} /> About Me Story</h3>
+            <h3><User size={20} /> {editLang === 'en' ? 'About Me Story (English)' : 'قصتي (العربية)'}</h3>
             <div className="preview-tabs">
               <button type="button" className={!showPreview ? "active" : ""} onClick={() => setShowPreview(false)}><Code size={14}/> Editor</button>
               <button type="button" className={showPreview ? "active" : ""} onClick={() => setShowPreview(true)}><Eye size={14}/> Live Preview</button>
             </div>
           </div>
-          <div className="input-field">
-            <label>Catchy Hero Phrase</label>
-            <input 
-              placeholder="Engineering clarity into complex systems." 
-              value={formData.catchyPhrase} 
-              onChange={e => setFormData({...formData, catchyPhrase: e.target.value})} 
-            />
-          </div>
-          <div className="input-field">
-            <label>Full Biography (Supports Markdown)</label>
-            {!showPreview ? (
-              <textarea 
-                rows={10}
-                placeholder="Share your story using Markdown...
-Use # for headers, - for bullets, **bold** for emphasis."
-                value={formData.aboutMe} 
-                onChange={e => setFormData({...formData, aboutMe: e.target.value})} 
-              />
-            ) : (
-              <div className="markdown-preview glass">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {formData.aboutMe || "_No biography written yet..._"}
-                </ReactMarkdown>
+          {editLang === 'en' ? (
+            <>
+              <div className="input-field">
+                <label>Catchy Hero Phrase (English)</label>
+                <input 
+                  placeholder="Engineering clarity into complex systems." 
+                  value={formData.catchyPhrase} 
+                  onChange={e => setFormData({...formData, catchyPhrase: e.target.value})} 
+                />
               </div>
-            )}
-          </div>
+              <div className="input-field">
+                <label>Full Biography (English - Supports Markdown)</label>
+                {!showPreview ? (
+                  <textarea 
+                    rows={10}
+                    placeholder="Share your story using Markdown...
+Use # for headers, - for bullets, **bold** for emphasis."
+                    value={formData.aboutMe} 
+                    onChange={e => setFormData({...formData, aboutMe: e.target.value})} 
+                  />
+                ) : (
+                  <div className="markdown-preview glass">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {formData.aboutMe || "_No biography written yet..._"}
+                    </ReactMarkdown>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <div dir="rtl">
+              <div className="input-field">
+                <label>العبارة الجذابة (العربية)</label>
+                <input 
+                  placeholder="هندسة الوضوح في الأنظمة المعقدة." 
+                  value={formData.catchyPhrase_ar || ''} 
+                  onChange={e => setFormData({...formData, catchyPhrase_ar: e.target.value})}
+                  className="rtl-input"
+                />
+              </div>
+              <div className="input-field">
+                <label>السيرة الذاتية الكاملة (العربية - يدعم ماركداون)</label>
+                {!showPreview ? (
+                  <textarea 
+                    rows={10}
+                    placeholder="شارك قصتك باستخدام ماركداون...
+استخدم # للعناوين، - للقوائم، **عريض** للتأكيد."
+                    value={formData.aboutMe_ar || ''} 
+                    onChange={e => setFormData({...formData, aboutMe_ar: e.target.value})}
+                    className="rtl-input"
+                  />
+                ) : (
+                  <div className="markdown-preview glass" dir="rtl">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {formData.aboutMe_ar || "_لم تتم كتابة السيرة الذاتية بعد..._"}
+                    </ReactMarkdown>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
 
         <button type="submit" className="save-btn">
@@ -232,9 +319,16 @@ Use # for headers, - for bullets, **bold** for emphasis."
 
       <style jsx>{`
         .admin-page { max-width: 1000px; margin: 0 auto; }
-        .header { margin-bottom: 3rem; }
+        .header { margin-bottom: 3rem; display: flex; justify-content: space-between; align-items: flex-start; }
         .header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
         .header p { opacity: 0.6; }
+
+        .lang-toggle { display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 4px; border-radius: 8px; }
+        .lang-toggle button { display: flex; align-items: center; gap: 6px; border: none; background: transparent; color: rgba(255,255,255,0.4); padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: 0.3s; }
+        .lang-toggle button.active { background: #7628E5; color: white; }
+
+        .rtl-input { text-align: right; direction: rtl; }
+        .rtl-group { display: grid; gap: 1.5rem; }
 
         .profile-top-card {
           display: flex;

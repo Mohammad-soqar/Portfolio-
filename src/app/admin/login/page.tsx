@@ -1,4 +1,6 @@
 "use client";
+export const dynamic = "force-dynamic";
+
 import { useState, FormEvent } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
@@ -26,18 +28,22 @@ export default function LoginPage() {
       console.error("Auth Error:", err);
       // Map common Firebase errors to user-friendly messages
       let msg = err.message;
-      if (err.code === "auth/invalid-credential") msg = "Incorrect email or password.";
-      if (err.code === "auth/email-already-in-use") msg = "This email is already registered.";
-      if (err.code === "auth/weak-password") msg = "Password should be at least 6 characters.";
-      if (err.code === "auth/configuration-not-found") msg = "Email/Password provider not enabled in Firebase Console.";
-      
+      if (err.code === "auth/invalid-credential")
+        msg = "Incorrect email or password.";
+      if (err.code === "auth/email-already-in-use")
+        msg = "This email is already registered.";
+      if (err.code === "auth/weak-password")
+        msg = "Password should be at least 6 characters.";
+      if (err.code === "auth/configuration-not-found")
+        msg = "Email/Password provider not enabled in Firebase Console.";
+
       setError(msg || "Authentication failed. Please try again.");
     }
   };
 
   return (
     <div className="admin-login-container">
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         className="login-card glass"
@@ -47,32 +53,47 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit}>
           <div className="input-group">
             <label>Email</label>
-            <input 
-              type="email" 
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)} 
-              required 
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div className="input-group">
             <label>Password</label>
-            <input 
-              type="password" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           <button type="submit" className="login-btn">
             {isRegistering ? "Register" : "Login"}
           </button>
         </form>
-        <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.9rem', opacity: 0.7 }}>
-          {isRegistering ? "Already have an account?" : "Need to create an account?"}{" "}
-          <button 
-            type="button" 
+        <div
+          style={{
+            marginTop: "1.5rem",
+            textAlign: "center",
+            fontSize: "0.9rem",
+            opacity: 0.7,
+          }}
+        >
+          {isRegistering
+            ? "Already have an account?"
+            : "Need to create an account?"}{" "}
+          <button
+            type="button"
             onClick={() => setIsRegistering(!isRegistering)}
-            style={{ background: 'none', border: 'none', color: '#3b82f6', cursor: 'pointer', padding: 0 }}
+            style={{
+              background: "none",
+              border: "none",
+              color: "#3b82f6",
+              cursor: "pointer",
+              padding: 0,
+            }}
           >
             {isRegistering ? "Login here" : "Register here"}
           </button>
@@ -98,9 +119,18 @@ export default function LoginPage() {
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(10px);
         }
-        h1 { margin-bottom: 2rem; text-align: center; }
-        .input-group { margin-bottom: 1.5rem; }
-        label { display: block; margin-bottom: 0.5rem; opacity: 0.8; }
+        h1 {
+          margin-bottom: 2rem;
+          text-align: center;
+        }
+        .input-group {
+          margin-bottom: 1.5rem;
+        }
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          opacity: 0.8;
+        }
         input {
           width: 100%;
           padding: 12px;
@@ -110,7 +140,9 @@ export default function LoginPage() {
           color: white;
           outline: none;
         }
-        input:focus { border-color: #3b82f6; }
+        input:focus {
+          border-color: #3b82f6;
+        }
         .login-btn {
           width: 100%;
           padding: 12px;
@@ -122,8 +154,14 @@ export default function LoginPage() {
           font-weight: 600;
           transition: 0.3s;
         }
-        .login-btn:hover { background: #2563eb; }
-        .error-msg { color: #ef4444; margin-bottom: 1rem; text-align: center; }
+        .login-btn:hover {
+          background: #2563eb;
+        }
+        .error-msg {
+          color: #ef4444;
+          margin-bottom: 1rem;
+          text-align: center;
+        }
       `}</style>
     </div>
   );

@@ -36,7 +36,21 @@
     "tag": "عني"
   },
   "contact": {
-    "title": "لنكن على تواصل"
+    "title": "لنقم ببناء شيء رائع",
+    "getInTouch": "تواصل معي",
+    "successTitle": "تم إرسال الرسالة!",
+    "successMsg": "شكراً لتواصلك. سأقوم بالرد عليك في أقرب وقت ممكن.",
+    "sendAnother": "إرسال رسالة أخرى",
+    "name": "اسمك",
+    "namePlaceholder": "فلان الفلاني",
+    "email": "بريدك الإلكتروني",
+    "emailPlaceholder": "john@example.com",
+    "subject": "الموضوع",
+    "subjectPlaceholder": "استفسار عن مشروع",
+    "message": "رسالتك",
+    "messagePlaceholder": "صف بإيجاز ما الذي تبحث عنه...",
+    "send": "إرسال الرسالة",
+    "sending": "جاري الإرسال..."
   },
   "common": {
     "back": "رجوع",
@@ -46,13 +60,24 @@
     "myProfile": "ملفي الشخصي",
     "experience": "الخبرة",
     "projects": "المشاريع",
+    "inquiries": "الاستفسارات",
     "admin": "لوحة التحكم",
     "systemOnline": "النظام متصل",
     "syncing": "جاري المزامنة...",
     "linkError": "خطأ في الاتصال",
     "viewProduction": "عرض الموقع",
     "terminateSession": "إنهاء الجلسة",
-    "translationPending": "[الترجمة قيد الإعداد]"
+    "translationPending": "[الترجمة قيد الإعداد]",
+    "confirmDelete": "هل أنت متأكد أنك تريد حذف هذا السجل؟",
+    "noInquiries": "لم يتم العثور على استفسارات.",
+    "replied": "تم الرد",
+    "received": "استُلمت في"
+  },
+  "status": {
+    "all": "الكل",
+    "new": "جديد",
+    "read": "مقروء",
+    "replied": "تم الرد"
   },
   "admin": {
     "welcome": "أهلاً",

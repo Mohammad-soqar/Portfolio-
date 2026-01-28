@@ -87,6 +87,7 @@ export default function ProjectsAdmin() {
     thumbnail: "",
     journey: [] as JourneyPhase[],
     categories: [] as string[],
+    color: "#7628E5",
   });
   const [uploading, setUploading] = useState(false);
 
@@ -289,6 +290,7 @@ export default function ProjectsAdmin() {
       thumbnail: p.thumbnail || "",
       journey: p.journey || [],
       categories: p.categories || [],
+      color: p.color || "#7628E5",
     });
     setEditLang("en");
     setIsModalOpen(true);
@@ -322,6 +324,7 @@ export default function ProjectsAdmin() {
       thumbnail: "",
       journey: [],
       categories: [],
+      color: "#7628E5",
     });
   };
 
@@ -555,6 +558,33 @@ export default function ProjectsAdmin() {
                       </div>
                     </div>
                   )}
+
+                  <div className="flex flex-col gap-2">
+                    <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">
+                      Theme Color
+                    </label>
+                    <div className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl px-6 py-4">
+                      <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-white/10 flex-shrink-0">
+                        <input
+                          type="color"
+                          className="absolute inset-[-10px] w-[200%] h-[200%] cursor-pointer"
+                          value={formData.color}
+                          onChange={(e) =>
+                            setFormData({ ...formData, color: e.target.value })
+                          }
+                        />
+                      </div>
+                      <input
+                        type="text"
+                        className="bg-transparent border-none text-white outline-none font-mono text-sm uppercase flex-1"
+                        value={formData.color}
+                        onChange={(e) =>
+                          setFormData({ ...formData, color: e.target.value })
+                        }
+                        placeholder="#7628E5"
+                      />
+                    </div>
+                  </div>
                 </div>
               )}
 

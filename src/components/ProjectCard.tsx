@@ -19,6 +19,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const { i18n } = useTranslation();
   const isRtl = i18n.language === "ar";
+  const themeColor = project.color || "#7628E5";
 
   // Helper to get localized content
   const getLocalized = <T extends string | undefined>(
@@ -39,15 +40,18 @@ export default function ProjectCard({
       whileInView={isPreview ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: idx * 0.1 }}
-      style={{
-        background:
-          "linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        boxShadow:
-          "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
-      }}
+      style={
+        {
+          background:
+            "linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          border: "1px solid rgba(255,255,255,0.08)",
+          boxShadow:
+            "0 8px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.1)",
+          "--card-theme-color": themeColor,
+        } as any
+      }
     >
       {/* Movie Thumbnail Section */}
       <div className="relative aspect-[16/10] overflow-hidden">
@@ -106,9 +110,9 @@ export default function ProjectCard({
               <span
                 className="px-2.5 py-1 rounded-md text-[10px] font-semibold"
                 style={{
-                  background: "rgba(139, 92, 246, 0.3)",
+                  background: `${themeColor}4D`, // 30% opacity
                   backdropFilter: "blur(10px)",
-                  border: "1px solid rgba(139, 92, 246, 0.3)",
+                  border: `1px solid ${themeColor}4D`,
                 }}
               >
                 +{project.techStack.length - 3}
@@ -152,7 +156,7 @@ export default function ProjectCard({
 
           {/* Title and Meta */}
           <div className="flex-1 min-w-0">
-            <h3 className="font-bold text-lg tracking-tight line-clamp-1 text-white group-hover:text-purple-300 transition-colors">
+            <h3 className="font-bold text-lg tracking-tight line-clamp-1 text-white group-hover:text-[var(--card-theme-color)] transition-colors">
               {getLocalized(project.title, project.title_ar) ||
                 "Untitled Project"}
             </h3>
@@ -182,8 +186,7 @@ export default function ProjectCard({
         <div
           className="absolute bottom-0 left-0 right-0 h-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
-            background:
-              "linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.8), transparent)",
+            background: `linear-gradient(90deg, transparent, ${themeColor}, transparent)`,
           }}
         />
       </div>
@@ -192,8 +195,7 @@ export default function ProjectCard({
       <div
         className="absolute -top-20 -right-20 w-40 h-40 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500 pointer-events-none"
         style={{
-          background:
-            "radial-gradient(circle, rgba(139, 92, 246, 0.8) 0%, transparent 70%)",
+          background: `radial-gradient(circle, ${themeColor}CC 0%, transparent 70%)`,
         }}
       />
     </motion.div>

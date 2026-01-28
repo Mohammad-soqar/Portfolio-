@@ -43,6 +43,7 @@ export interface Project {
     logo?: string;
     homeImage?: string;
     thumbnail?: string; // Movie-card thumbnail image
+    color?: string; // Custom theme color (e.g., #7628E5)
     categories?: string[]; // Multiple categories for filtering (Mobile, Web, UI/UX, AI, etc.)
     createdAt?: string;
 }
@@ -71,4 +72,14 @@ export interface Profile {
 export interface User {
     uid: string;
     email: string | null;
+}
+
+export interface ContactMessage {
+    id?: string;
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+    createdAt?: string;
+    status: "new" | "read" | "replied";
 }

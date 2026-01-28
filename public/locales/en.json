@@ -36,7 +36,21 @@
     "tag": "About Me"
   },
   "contact": {
-    "title": "Let's Connect"
+    "title": "Let's Build Something Great",
+    "getInTouch": "Get In Touch",
+    "successTitle": "Message Sent!",
+    "successMsg": "Thank you for reaching out. I'll get back to you as soon as possible.",
+    "sendAnother": "Send Another Message",
+    "name": "Your Name",
+    "namePlaceholder": "John Doe",
+    "email": "Your Email",
+    "emailPlaceholder": "john@example.com",
+    "subject": "Subject",
+    "subjectPlaceholder": "Project Inquiry",
+    "message": "Your Message",
+    "messagePlaceholder": "Briefly describe what you're looking for...",
+    "send": "SEND MESSAGE",
+    "sending": "SENDING..."
   },
   "common": {
     "back": "BACK",
@@ -46,13 +60,24 @@
     "myProfile": "My Profile",
     "experience": "Experience",
     "projects": "Projects",
+    "inquiries": "Inquiries",
     "admin": "ADMIN",
     "systemOnline": "System Online",
     "syncing": "Syncing...",
     "linkError": "Link Error",
     "viewProduction": "View Production",
     "terminateSession": "Terminate Session",
-    "translationPending": "[Translation pending]"
+    "translationPending": "[Translation pending]",
+    "confirmDelete": "Are you sure you want to delete this recording?",
+    "noInquiries": "No inquiries found.",
+    "replied": "Mark Replied",
+    "received": "Received"
+  },
+  "status": {
+    "all": "All",
+    "new": "New",
+    "read": "Read",
+    "replied": "Replied"
   },
   "admin": {
     "welcome": "WELCOME",

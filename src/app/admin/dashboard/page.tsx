@@ -17,6 +17,7 @@ import {
   Database,
   CheckCircle2,
   AlertCircle,
+  Mail,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -24,19 +25,25 @@ export default function Dashboard() {
   const { user } = useAuth();
   const router = useRouter();
   const { t } = useTranslation();
-  const [counts, setCounts] = useState({ experiences: 0, projects: 0 });
+  const [counts, setCounts] = useState({
+    experiences: 0,
+    projects: 0,
+    contacts: 0,
+  });
   const [isSeeding, setIsSeeding] = useState(false);
   const [seedSuccess, setSeedSuccess] = useState<boolean | null>(null);
 
   const fetchCounts = useCallback(async () => {
     try {
-      const [expSnap, projSnap] = await Promise.all([
+      const [expSnap, projSnap, contactSnap] = await Promise.all([
         getDocs(collection(db, "experiences")),
         getDocs(collection(db, "projects")),
+        getDocs(collection(db, "contacts")),
       ]);
       setCounts({
         experiences: expSnap.size,
         projects: projSnap.size,
+        contacts: contactSnap.size,
       });
     } catch (err) {
       console.error("Dashboard count fetch failed:", err);
@@ -165,18 +172,19 @@ export default function Dashboard() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 rounded-[32px] flex items-center gap-6 relative overflow-hidden group hover:border-emerald-500/50 hover:bg-white/[0.05] transition-all shadow-2xl sm:col-span-2 lg:col-span-1"
+          className="bg-white/[0.03] backdrop-blur-xl border border-white/10 p-8 rounded-[32px] flex items-center gap-6 relative overflow-hidden group hover:border-emerald-500/50 hover:bg-white/[0.05] transition-all shadow-2xl cursor-pointer"
+          onClick={() => router.push("/admin/contacts")}
         >
           <div className="absolute -right-4 -top-4 w-24 h-24 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-colors"></div>
           <div className="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(16,185,129,0.1)]">
-            <Users size={28} />
+            <Database size={28} />
           </div>
           <div>
             <h3 className="text-[10px] font-black text-white/40 uppercase tracking-[0.2em] mb-1">
-              {t("admin.identity")}
+              {t("common.inquiries")}
             </h3>
-            <p className="text-3xl font-bold uppercase tracking-tight bg-gradient-to-br from-emerald-400 to-emerald-600 bg-clip-text text-transparent">
-              {t("admin.active")}
+            <p className="text-4xl font-bold bg-gradient-to-br from-white to-white/60 bg-clip-text text-transparent">
+              {counts.contacts}
             </p>
           </div>
           <ArrowUpRight
@@ -199,21 +207,21 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               {
-                label: "Projects",
+                label: t("common.projects"),
                 icon: <Layers size={24} />,
                 href: "/admin/projects",
                 color: "hover:border-purple-500/50 hover:text-purple-400",
               },
               {
-                label: "Experience",
+                label: t("common.experience"),
                 icon: <Briefcase size={24} />,
                 href: "/admin/experience",
                 color: "hover:border-blue-500/50 hover:text-blue-400",
               },
               {
-                label: "Identity",
-                icon: <Users size={24} />,
-                href: "/admin/profile",
+                label: t("common.inquiries"),
+                icon: <Mail size={24} />,
+                href: "/admin/contacts",
                 color: "hover:border-emerald-500/50 hover:text-emerald-400",
               },
             ].map((action) => (

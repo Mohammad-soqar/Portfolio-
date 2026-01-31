@@ -371,11 +371,7 @@ a {
   overflow: hidden;
 }
 
-@media (max-width: 1350px) {
-  .project-card {
-    height: 300px;
-  }
-}
+/* Removed fixed card height below 1350px to prevent squashing */
 
 /* Resume */
 .resume {

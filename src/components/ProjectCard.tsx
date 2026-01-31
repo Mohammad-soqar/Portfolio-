@@ -74,17 +74,26 @@ export default function ProjectCard({
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90" />
 
         {/* Top Glassy Badge - Category */}
-        {project.categories?.[0] && (
+        {project.categories && project.categories.length > 0 && (
           <div
-            className={`absolute top-4 ${isRtl ? "right-4" : "left-4"} px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider`}
-            style={{
-              background: "rgba(255,255,255,0.1)",
-              backdropFilter: "blur(10px)",
-              WebkitBackdropFilter: "blur(10px)",
-              border: "1px solid rgba(255,255,255,0.15)",
-            }}
+            className={`absolute top-4 ${isRtl ? "left-4" : "right-4"} flex gap-2 flex-wrap justify-end`}
           >
-            {project.categories[0]}
+            {project.categories.map((category, i) => (
+              <div
+                key={i}
+                className="px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap"
+                style={{
+                  background: "rgba(0,0,0,0.6)",
+                  backdropFilter: "blur(20px)",
+                  WebkitBackdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  color: "#fff",
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
+                }}
+              >
+                {category}
+              </div>
+            ))}
           </div>
         )}
 

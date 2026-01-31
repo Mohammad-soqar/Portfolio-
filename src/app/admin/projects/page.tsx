@@ -88,12 +88,22 @@ export default function ProjectsAdmin() {
     journey: [] as JourneyPhase[],
     categories: [] as string[],
     color: "#7628E5",
+    order: 0,
   });
   const [uploading, setUploading] = useState(false);
 
   const fetchProjects = useCallback(async () => {
-    const data = await getAll<Project>("projects", "createdAt");
-    setProjects(data);
+    const data = await getAll<Project>("projects", "createdAt", "desc");
+    const sorted = [...data].sort((a, b) => {
+      const orderA = a.order ?? 999;
+      const orderB = b.order ?? 999;
+      if (orderA !== orderB) return orderA - orderB;
+      return (
+        new Date(b.createdAt || 0).getTime() -
+        new Date(a.createdAt || 0).getTime()
+      );
+    });
+    setProjects(sorted);
   }, []);
 
   useEffect(() => {
@@ -253,6 +263,7 @@ export default function ProjectsAdmin() {
     const dataToSave = {
       ...formData,
       techStack: formData.techStack.split(",").map((t) => t.trim()),
+      order: Number(formData.order) || 0,
     };
     if (editingId) {
       await update("projects", editingId, dataToSave);
@@ -291,6 +302,7 @@ export default function ProjectsAdmin() {
       journey: p.journey || [],
       categories: p.categories || [],
       color: p.color || "#7628E5",
+      order: p.order || 0,
     });
     setEditLang("en");
     setIsModalOpen(true);
@@ -325,6 +337,7 @@ export default function ProjectsAdmin() {
       journey: [],
       categories: [],
       color: "#7628E5",
+      order: 0,
     });
   };
 
@@ -559,29 +572,51 @@ export default function ProjectsAdmin() {
                     </div>
                   )}
 
-                  <div className="flex flex-col gap-2">
-                    <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">
-                      Theme Color
-                    </label>
-                    <div className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl px-6 py-4">
-                      <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-white/10 flex-shrink-0">
+                  <div className="grid grid-cols-2 gap-8">
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">
+                        Theme Color
+                      </label>
+                      <div className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-2xl px-6 py-4">
+                        <div className="relative w-12 h-12 rounded-lg overflow-hidden border border-white/10 flex-shrink-0">
+                          <input
+                            type="color"
+                            className="absolute inset-[-10px] w-[200%] h-[200%] cursor-pointer"
+                            value={formData.color}
+                            onChange={(e) =>
+                              setFormData({
+                                ...formData,
+                                color: e.target.value,
+                              })
+                            }
+                          />
+                        </div>
                         <input
-                          type="color"
-                          className="absolute inset-[-10px] w-[200%] h-[200%] cursor-pointer"
+                          type="text"
+                          className="bg-transparent border-none text-white outline-none font-mono text-sm uppercase flex-1"
                           value={formData.color}
                           onChange={(e) =>
                             setFormData({ ...formData, color: e.target.value })
                           }
+                          placeholder="#7628E5"
                         />
                       </div>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <label className="text-[10px] font-black text-white/30 uppercase tracking-widest ml-4">
+                        Display Order
+                      </label>
                       <input
-                        type="text"
-                        className="bg-transparent border-none text-white outline-none font-mono text-sm uppercase flex-1"
-                        value={formData.color}
+                        type="number"
+                        className="bg-white/5 border border-white/10 focus:border-[#7628E5] focus:ring-1 focus:ring-[#7628E5] rounded-2xl px-6 py-4 text-white outline-none transition-all font-bold"
+                        placeholder="0"
+                        value={formData.order}
                         onChange={(e) =>
-                          setFormData({ ...formData, color: e.target.value })
+                          setFormData({
+                            ...formData,
+                            order: Number(e.target.value),
+                          })
                         }
-                        placeholder="#7628E5"
                       />
                     </div>
                   </div>

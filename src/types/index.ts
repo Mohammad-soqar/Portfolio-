@@ -45,6 +45,7 @@ export interface Project {
     thumbnail?: string; // Movie-card thumbnail image
     color?: string; // Custom theme color (e.g., #7628E5)
     categories?: string[]; // Multiple categories for filtering (Mobile, Web, UI/UX, AI, etc.)
+    order?: number; // Display order (lower numbers appear first)
     createdAt?: string;
 }
 

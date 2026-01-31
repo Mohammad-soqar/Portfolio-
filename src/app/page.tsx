@@ -8,7 +8,13 @@ import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { UserCircle } from "lucide-react";
+import {
+  UserCircle,
+  Github,
+  Linkedin,
+  Instagram,
+  ExternalLink,
+} from "lucide-react";
 import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
 import Image from "next/image";
@@ -40,11 +46,23 @@ export default function Home() {
       try {
         const [expData, projData, profData] = await Promise.all([
           getAll<Experience>("experiences", "order", "asc"),
-          getAll<Project>("projects", "createdAt"),
+          getAll<Project>("projects", "createdAt", "desc"),
           getAll<Profile>("profile"),
         ]);
         setExperiences(expData);
-        setProjects(projData);
+
+        // Sort projects in memory: order (asc), then createdAt (desc) fallback
+        const sortedProjects = [...projData].sort((a, b) => {
+          const orderA = a.order ?? 999;
+          const orderB = b.order ?? 999;
+          if (orderA !== orderB) return orderA - orderB;
+          return (
+            new Date(b.createdAt || 0).getTime() -
+            new Date(a.createdAt || 0).getTime()
+          );
+        });
+
+        setProjects(sortedProjects);
         if (profData.length > 0) setProfile(profData[0]);
       } catch (err) {
         console.error("Error loading data:", err);
@@ -122,7 +140,7 @@ export default function Home() {
       <div className="max-w-[1400px] mx-auto px-6 md:px-16">
         {/* HEADER SECTION */}
         <section
-          className="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-between pb-20 pt-32 lg:pt-0 gap-8 lg:gap-16"
+          className="min-h-screen flex flex-col lg:flex-row items-center justify-center lg:justify-between pb-20 pt-24 lg:pt-0 gap-12 lg:gap-16"
           id="home"
         >
           <motion.div
@@ -197,7 +215,7 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.5 }}
-            className="flex-1 max-w-[450px] relative flex justify-center items-center"
+            className="w-full lg:flex-1 max-w-[400px] lg:max-w-[450px] relative flex justify-center items-center"
           >
             {profile?.profilePic ? (
               <div className="w-full aspect-square relative z-10 rounded-[30px] border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_8%,rgba(255,255,255,0.1)_18%,rgba(255,255,255,0.05)_33%)] bg-[length:1000px_100%] animate-[shimmer_2s_infinite_linear]">
@@ -215,13 +233,13 @@ export default function Home() {
                 <UserCircle size={100} opacity={0.1} />
               </div>
             )}
-            <div className="absolute w-[120%] h-[120%] bg-[radial-gradient(circle,rgba(118,40,229,0.3),transparent_70%)] z-0 blur-[40px]"></div>
+            <div className="absolute w-[100%] h-[100%] bg-[radial-gradient(circle,rgba(118,40,229,0.3),transparent_70%)] z-0 blur-[40px]"></div>
           </motion.div>
         </section>
 
         {/* PORTFOLIO SECTION */}
         <section className="py-12 md:py-24" id="portfolio">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+          <div className="flex flex-col items-center mb-12 gap-8">
             <div className={sectionTagStyle + " mb-0"}>
               <div className="relative w-[14px] h-[14px]">
                 <Image src="/images/Star.png" alt="Star" fill />
@@ -229,22 +247,24 @@ export default function Home() {
               <p>{t("portfolio.title")}</p>
             </div>
 
-            <div className="inline-flex p-1.5 rounded-full bg-[rgba(255,255,255,0.06)] border border-white/10 backdrop-blur-sm flex-wrap justify-center">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-5 py-2 rounded-full cursor-pointer font-medium transition-all duration-200 text-sm md:text-base ${selectedCategory === cat ? "bg-[var(--accent-color)] text-white shadow-[0_4px_12px_var(--accent-glow)]" : "bg-transparent text-white hover:text-white"}`}
-                >
-                  {t(`portfolio.${cat.toLowerCase().replace("/", "")}`)}
-                </button>
-              ))}
+            <div className="w-full flex items-center justify-center md:justify-center overflow-x-auto no-scrollbar py-2 px-4 whitespace-nowrap">
+              <div className="inline-flex p-1.5 rounded-full bg-[rgba(255,255,255,0.06)] border border-white/10 backdrop-blur-sm whitespace-nowrap">
+                {CATEGORIES.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-4 py-2 rounded-full cursor-pointer font-medium transition-all duration-200 text-sm md:text-base ${selectedCategory === cat ? "bg-[var(--accent-color)] text-white shadow-[0_4px_12px_var(--accent-glow)]" : "bg-transparent text-white hover:text-white"}`}
+                  >
+                    {t(`portfolio.${cat.toLowerCase().replace("/", "")}`)}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
           <motion.div
             layout
-            className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] md:grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filteredProjects.map((project, idx) => (
               // Note: Ensure ProjectCard component accepts generic stylings or is updated to tailwind too.
@@ -366,33 +386,73 @@ export default function Home() {
         <ContactForm />
 
         {/* SOCIAL LINKS SECTION */}
-        <section className="pb-24 md:pb-32 text-center">
-          <ul className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 list-none">
-            <li>
-              <a
-                href="https://github.com/Mohammad-soqar"
-                className="block border border-white/10 px-8 py-4 rounded-2xl transition-all duration-300 hover:border-[var(--accent-color)] hover:bg-[rgba(118,40,229,0.1)]"
-              >
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.linkedin.com/in/mohammad-soqar/"
-                className="block border border-white/10 px-8 py-4 rounded-2xl transition-all duration-300 hover:border-[var(--accent-color)] hover:bg-[rgba(118,40,229,0.1)]"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/mohammad_soqar/"
-                className="block border border-white/10 px-8 py-4 rounded-2xl transition-all duration-300 hover:border-[var(--accent-color)] hover:bg-[rgba(118,40,229,0.1)]"
-              >
-                Instagram
-              </a>
-            </li>
-          </ul>
+        <section className="pb-24 md:pb-32">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="flex flex-col items-center"
+          >
+            <motion.div
+              variants={itemVariants}
+              className={sectionTagStyle + " mb-12"}
+            >
+              <div className="relative w-[14px] h-[14px]">
+                <Image src="/images/Star.png" alt="Star" fill />
+              </div>
+              <p>{i18n.language === "ar" ? "تواصل معي" : "Connect with me"}</p>
+            </motion.div>
+
+            <motion.ul
+              variants={containerVariants}
+              className="flex flex-wrap justify-center gap-4 md:gap-6 list-none"
+            >
+              {[
+                {
+                  name: "GitHub",
+                  href: "https://github.com/Mohammad-soqar",
+                  icon: <Github size={20} />,
+                  color:
+                    "hover:text-[#fff] hover:border-[#6e5494] hover:bg-[#6e5494]/10",
+                },
+                {
+                  name: "LinkedIn",
+                  href: "https://www.linkedin.com/in/mohammad-soqar/",
+                  icon: <Linkedin size={20} />,
+                  color:
+                    "hover:text-[#0077b5] hover:border-[#0077b5] hover:bg-[#0077b5]/10",
+                },
+                {
+                  name: "Instagram",
+                  href: "https://www.instagram.com/mohammad_soqar/",
+                  icon: <Instagram size={20} />,
+                  color:
+                    "hover:text-[#e4405f] hover:border-[#e4405f] hover:bg-[#e4405f]/10",
+                },
+              ].map((social) => (
+                <motion.li key={social.name} variants={itemVariants}>
+                  <a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`group flex items-center gap-3 border border-white/10 px-6 py-4 rounded-2xl transition-all duration-300 backdrop-blur-sm bg-white/[0.02] ${social.color}`}
+                  >
+                    <span className="opacity-70 group-hover:opacity-100 transition-opacity">
+                      {social.icon}
+                    </span>
+                    <span className="font-semibold text-[0.95rem]">
+                      {social.name}
+                    </span>
+                    <ExternalLink
+                      size={14}
+                      className="opacity-0 group-hover:opacity-40 transition-all -translate-y-1 translate-x-1"
+                    />
+                  </a>
+                </motion.li>
+              ))}
+            </motion.ul>
+          </motion.div>
         </section>
 
         {/* FOOTER */}

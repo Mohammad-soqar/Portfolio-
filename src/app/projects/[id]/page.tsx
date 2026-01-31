@@ -82,14 +82,15 @@ export default function ProjectPage() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight * 0.5;
+      // Use a consistent offset (e.g., 100px) from the top of the viewport
+      const scrollPosition = window.scrollY + 100;
 
       for (const section of filteredSections) {
         const element = document.getElementById(section.id);
         if (element) {
           const top = element.offsetTop;
-          const height = element.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
+          const bottom = top + element.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < bottom) {
             setActiveSection(section.id);
           }
         }
@@ -97,7 +98,7 @@ export default function ProjectPage() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [filteredSections]);
 
   const scrollTo = (sectionId: string) => {
     const el = document.getElementById(sectionId);
@@ -219,7 +220,10 @@ export default function ProjectPage() {
               boxShadow: `0 0 15px ${themeColor}1A`,
             }}
           >
-            <Sparkles size={14} /> {project.categories?.[0] || "Case Study"}
+            <Sparkles size={14} />{" "}
+            {project.categories && project.categories.length > 0
+              ? project.categories.join(" • ")
+              : "Case Study"}
           </motion.div>
 
           <motion.h1
@@ -635,31 +639,7 @@ export default function ProjectPage() {
                 </div>
               </div>
 
-              <div className="flex justify-center lg:order-1">
-                <div className="relative bg-[#0A0A0A] border border-white/10 p-12 md:p-16 rounded-[40px] text-center w-full max-w-md overflow-hidden group">
-                  <div
-                    className="absolute top-0 right-0 w-40 h-40 bg-[var(--theme-color)] blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity"
-                    style={{ backgroundColor: themeColor }}
-                  ></div>
-                  <div className="relative z-10 flex flex-col items-center">
-                    <div
-                      className="w-20 h-20 rounded-2xl bg-[var(--theme-color)] flex items-center justify-center mb-8 transform group-hover:scale-110 transition-transform"
-                      style={{
-                        backgroundColor: themeColor,
-                        boxShadow: `0 0 30px ${themeColor}66`,
-                      }}
-                    >
-                      <Target className="text-white" size={40} />
-                    </div>
-                    <div className="text-6xl md:text-8xl font-black text-white mb-4 tracking-tighter">
-                      100%
-                    </div>
-                    <div className="text-sm font-bold uppercase tracking-[0.2em] opacity-50">
-                      {t("projectDetails.projectDelivery")}
-                    </div>
-                  </div>
-                </div>
-              </div>
+              {/* Removed hardcoded delivery box */}
             </div>
           </div>
         </section>

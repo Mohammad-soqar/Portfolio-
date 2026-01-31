@@ -418,7 +418,7 @@ export default function Home() {
                 },
                 {
                   name: "LinkedIn",
-                  href: "https://www.linkedin.com/in/mohammad-soqar/",
+                  href: "https://www.linkedin.com/in/mohammad-soqar-ahmad/",
                   icon: <Linkedin size={20} />,
                   color:
                     "hover:text-[#0077b5] hover:border-[#0077b5] hover:bg-[#0077b5]/10",

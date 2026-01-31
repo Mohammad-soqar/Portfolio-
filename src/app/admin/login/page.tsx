@@ -9,20 +9,15 @@ import { motion } from "framer-motion";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isRegistering, setIsRegistering] = useState(false);
   const [error, setError] = useState("");
-  const { login, register } = useAuth();
+  const { login } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
     try {
-      if (isRegistering) {
-        await register(email, password);
-      } else {
         await login(email, password);
-      }
       router.push("/admin/dashboard");
     } catch (err: any) {
       console.error("Auth Error:", err);
@@ -48,7 +43,7 @@ export default function LoginPage() {
         animate={{ opacity: 1, y: 0 }}
         className="login-card glass"
       >
-        <h1>{isRegistering ? "Create Admin" : "Admin Login"}</h1>
+        <h1>Admin Login</h1>
         {error && <p className="error-msg">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="input-group">
@@ -70,7 +65,7 @@ export default function LoginPage() {
             />
           </div>
           <button type="submit" className="login-btn">
-            {isRegistering ? "Register" : "Login"}
+            Login
           </button>
         </form>
         <div
@@ -81,22 +76,8 @@ export default function LoginPage() {
             opacity: 0.7,
           }}
         >
-          {isRegistering
-            ? "Already have an account?"
-            : "Need to create an account?"}{" "}
-          <button
-            type="button"
-            onClick={() => setIsRegistering(!isRegistering)}
-            style={{
-              background: "none",
-              border: "none",
-              color: "#3b82f6",
-              cursor: "pointer",
-              padding: 0,
-            }}
-          >
-            {isRegistering ? "Login here" : "Register here"}
-          </button>
+          
+         
         </div>
       </motion.div>
 

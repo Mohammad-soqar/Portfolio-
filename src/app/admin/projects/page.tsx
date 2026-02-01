@@ -8,10 +8,14 @@ import {
   ChangeEvent,
   useCallback,
   useRef,
+  useMemo,
 } from "react";
 import { getAll, create, update, remove } from "@/lib/firestore";
 import { Project } from "@/types";
 import { storage } from "@/lib/firebase";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import ProjectExportTemplate from "@/components/ProjectExportTemplate";
 import {
   ref,
   uploadBytes,
@@ -33,6 +37,10 @@ import {
   Languages,
   Maximize2,
   Image as ImageIcon,
+  Download,
+  CheckSquare,
+  Square,
+  FileText,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -91,6 +99,8 @@ export default function ProjectsAdmin() {
     order: 0,
   });
   const [uploading, setUploading] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [isExporting, setIsExporting] = useState(false);
 
   const fetchProjects = useCallback(async () => {
     const data = await getAll<Project>("projects", "createdAt", "desc");
@@ -339,6 +349,82 @@ export default function ProjectsAdmin() {
       color: "#7628E5",
       order: 0,
     });
+  };
+
+  const handleExportPDF = async (
+    project: Project,
+    lang: "en" | "ar" = "en",
+  ) => {
+    setIsExporting(true);
+    try {
+      const container = document.createElement("div");
+      container.style.position = "absolute";
+      container.style.left = "-9999px";
+      container.style.top = "0";
+      document.body.appendChild(container);
+
+      // We need to render the template to the hidden container
+      // Since we are in a client component, we can use createRoot or just use a hidden div in the JSX
+      // But for simplicity and to avoid React issues with portal/rendering,
+      // I'll add a hidden container in the return and use that.
+
+      const targetElement = document.getElementById(`export-container`);
+      if (!targetElement) throw new Error("Export container not found");
+
+      // We'll use a temporary state or a direct approach to render
+      // For now, let's just use the hidden div approach in JSX below.
+
+      const element = document.getElementById(`project-export-${project.id}`);
+      if (!element) throw new Error("Project element not found");
+
+      const canvas = await html2canvas(element, {
+        useCORS: true,
+        scale: 2,
+        backgroundColor: "#ffffff",
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "px",
+        format: [canvas.width / 2, canvas.height / 2],
+      });
+
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width / 2, canvas.height / 2);
+      pdf.save(`${project.title.replace(/\s+/g, "_")}_${lang}.pdf`);
+    } catch (err) {
+      console.error("PDF Export Error:", err);
+      alert("Failed to export PDF.");
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleBulkExport = async () => {
+    const selectedProjects = projects.filter(
+      (p) => p.id && selectedIds.includes(p.id),
+    );
+    if (selectedProjects.length === 0) return;
+
+    for (const project of selectedProjects) {
+      await handleExportPDF(project, "en");
+      // Add a small delay between downloads to avoid browser blocks
+      await new Promise((resolve) => setTimeout(resolve, 500));
+    }
+  };
+
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id],
+    );
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.length === projects.length) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(projects.map((p) => p.id as string).filter(Boolean));
+    }
   };
 
   if (isModalOpen) {
@@ -1190,6 +1276,19 @@ export default function ProjectsAdmin() {
             </div>
           </div>
         </div>
+
+        {/* Hidden Export Containers */}
+        <div
+          id="export-container"
+          className="fixed left-[-9999px] top-0 pointer-events-none"
+        >
+          {projects.map((p) => (
+            <div key={p.id}>
+              <ProjectExportTemplate project={p} language="en" />
+              <ProjectExportTemplate project={p} language="ar" />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
@@ -1217,6 +1316,42 @@ export default function ProjectsAdmin() {
           <span>Initialize New Project</span>
         </button>
       </header>
+
+      {/* Bulk Actions Bar */}
+      <div className="flex items-center justify-between bg-white/5 border border-white/10 p-6 rounded-[32px] backdrop-blur-xl sticky top-[100px] z-40">
+        <div className="flex items-center gap-6">
+          <button
+            onClick={toggleSelectAll}
+            className="flex items-center gap-3 text-xs font-black text-white/40 hover:text-white transition-all uppercase tracking-widest"
+          >
+            {selectedIds.length === projects.length ? (
+              <CheckSquare size={16} className="text-[#7628E5]" />
+            ) : (
+              <Square size={16} />
+            )}
+            {selectedIds.length === projects.length
+              ? "Deselect All"
+              : "Select All"}
+          </button>
+          {selectedIds.length > 0 && (
+            <span className="text-[10px] font-black bg-[#7628E5] text-white px-3 py-1 rounded-full">
+              {selectedIds.length} SELECTED
+            </span>
+          )}
+        </div>
+
+        {selectedIds.length > 0 && (
+          <button
+            onClick={handleBulkExport}
+            disabled={isExporting}
+            className="flex items-center gap-3 bg-white text-black hover:bg-white/90 px-8 py-3 rounded-2xl font-black text-xs uppercase tracking-widest transition-all shadow-xl disabled:opacity-50"
+          >
+            <Download size={18} />
+            <span>{isExporting ? "Exporting..." : "Bulk Export PDF"}</span>
+          </button>
+        )}
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((p) => (
           <div
@@ -1292,8 +1427,49 @@ export default function ProjectsAdmin() {
                 >
                   <Trash2 size={14} />
                 </button>
+                <button
+                  onClick={() => handleExportPDF(p, "en")}
+                  disabled={isExporting}
+                  className="w-10 flex items-center justify-center bg-white/5 hover:bg-[#7628E5]/20 text-white/20 hover:text-[#7628E5] rounded-xl transition-all"
+                  title="Export PDF (EN)"
+                >
+                  <FileText size={14} />
+                </button>
+                <button
+                  onClick={() => handleExportPDF(p, "ar")}
+                  disabled={isExporting}
+                  className="w-10 flex items-center justify-center bg-white/5 hover:bg-[#7628E5]/20 text-white/20 hover:text-[#7628E5] rounded-xl transition-all"
+                  title="Export PDF (AR)"
+                >
+                  <Languages size={14} />
+                </button>
               </div>
             </div>
+
+            {/* Selection Checkbox */}
+            <button
+              onClick={() => p.id && toggleSelect(p.id)}
+              className={`absolute top-4 left-4 w-8 h-8 rounded-lg border-2 flex items-center justify-center transition-all z-30 ${
+                p.id && selectedIds.includes(p.id)
+                  ? "bg-[#7628E5] border-[#7628E5] text-white scale-110 shadow-lg shadow-purple-900/40"
+                  : "bg-black/40 border-white/10 text-transparent hover:border-white/30 backdrop-blur-md"
+              }`}
+            >
+              <CheckSquare size={16} />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* Hidden Export Containers for Dashboard View */}
+      <div
+        id="export-container"
+        className="fixed left-[-9999px] top-0 pointer-events-none"
+      >
+        {projects.map((p) => (
+          <div key={p.id}>
+            <ProjectExportTemplate project={p} language="en" />
+            <ProjectExportTemplate project={p} language="ar" />
           </div>
         ))}
       </div>

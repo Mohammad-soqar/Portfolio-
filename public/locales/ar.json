@@ -142,5 +142,17 @@
     "projectDelivery": "دقة تسليم المشروع",
     "backToTop": "العودة للأعلى",
     "projectNotFound": "المشروع غير موجود"
+  },
+  "links": {
+    "loading": "جاري التحميل...",
+    "chatWithMe": "تواصل معي مباشرة",
+    "whatsapp": "واتساب",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "انستغرام",
+    "portfolio": "الملف الشخصي",
+    "emailMe": "راسلني",
+    "callMe": "اتصل بي",
+    "allRightsReserved": "جميع الحقوق محفوظة."
   }
 }

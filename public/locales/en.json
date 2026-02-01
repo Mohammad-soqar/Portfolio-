@@ -142,5 +142,17 @@
     "projectDelivery": "Project Delivery Accuracy",
     "backToTop": "Back to top",
     "projectNotFound": "Project Not Found"
+  },
+  "links": {
+    "loading": "Loading...",
+    "chatWithMe": "Chat with me directly",
+    "whatsapp": "WhatsApp",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "portfolio": "Portfolio",
+    "emailMe": "Email Me",
+    "callMe": "Call Me",
+    "allRightsReserved": "All rights reserved."
   }
 }

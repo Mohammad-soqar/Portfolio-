@@ -5,6 +5,8 @@ import { getAll } from "@/lib/firestore";
 import { Profile } from "@/types";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import {
   Github,
   Linkedin,
@@ -56,6 +58,8 @@ const SOCIAL_LINKS = [
 export default function LinksPage() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
+  const { t, i18n } = useTranslation();
+  const isRtl = i18n.language === "ar";
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -81,7 +85,7 @@ export default function LinksPage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.5, ease: "easeOut" as const },
     },
   };
 
@@ -89,7 +93,7 @@ export default function LinksPage() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#050505] text-white gap-6">
         <div className="w-10 h-10 border-[3px] border-[rgba(118,40,229,0.2)] border-t-[#7628E5] rounded-full animate-spin"></div>
-        <p className="text-white/60">Loading...</p>
+        <p className="text-white/60">{t("links.loading")}</p>
       </div>
     );
   }
@@ -100,12 +104,25 @@ export default function LinksPage() {
     : "#";
 
   return (
-    <main className="min-h-screen bg-[#050505] bg-[url('/images/Background.png')] bg-cover bg-fixed text-white font-[family-name:var(--font-family)] antialiased">
+    <main
+      dir={isRtl ? "rtl" : "ltr"}
+      className="min-h-screen bg-[#050505] bg-[url('/images/Background.png')] bg-cover bg-fixed text-white font-[family-name:var(--font-family)] antialiased"
+    >
       {/* Gradient Overlays */}
       <div className="fixed inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 pointer-events-none" />
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(118,40,229,0.15),transparent_70%)] blur-3xl pointer-events-none" />
 
       <div className="relative z-10 max-w-md mx-auto px-6 py-12 flex flex-col items-center min-h-screen">
+        {/* Language Switcher */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="absolute top-4 end-4"
+        >
+          <LanguageSwitcher />
+        </motion.div>
+
         {/* Profile Photo with Faded Effect */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -222,10 +239,10 @@ export default function LinksPage() {
             </svg>
           </div>
           <span className="text-2xl font-bold text-[#25D366] group-hover:scale-105 transition-transform">
-            WhatsApp
+            {t("links.whatsapp")}
           </span>
           <span className="text-xs text-white/40 mt-1">
-            Chat with me directly
+            {t("links.chatWithMe")}
           </span>
         </motion.a>
 
@@ -257,7 +274,7 @@ export default function LinksPage() {
                 {link.icon}
               </span>
               <span className="flex-1 font-semibold text-white/80 group-hover:text-white transition-colors">
-                {link.name}
+                {t(`links.${link.name.toLowerCase()}`)}
               </span>
               <ExternalLink
                 size={16}
@@ -277,7 +294,7 @@ export default function LinksPage() {
                 <Mail size={22} />
               </span>
               <span className="flex-1 font-semibold text-white/80 group-hover:text-white transition-colors">
-                Email Me
+                {t("links.emailMe")}
               </span>
               <ExternalLink
                 size={16}
@@ -297,7 +314,7 @@ export default function LinksPage() {
                 <Phone size={22} />
               </span>
               <span className="flex-1 font-semibold text-white/80 group-hover:text-white transition-colors">
-                Call Me
+                {t("links.callMe")}
               </span>
               <ExternalLink
                 size={16}
@@ -315,7 +332,7 @@ export default function LinksPage() {
           className="mt-16 text-xs text-white/30 text-center"
         >
           © {new Date().getFullYear()} {profile?.name || "Mohammad Soqar Ahmad"}
-          . All rights reserved.
+          . {t("links.allRightsReserved")}
         </motion.p>
       </div>
     </main>

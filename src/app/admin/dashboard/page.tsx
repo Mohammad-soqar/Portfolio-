@@ -6,7 +6,6 @@ import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import { db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { seedLegacyData } from "@/lib/seed";
 import { motion } from "framer-motion";
 import {
   Users,
@@ -50,24 +49,7 @@ export default function Dashboard() {
     }
   }, []);
 
-  useEffect(() => {
-    fetchCounts();
-  }, [fetchCounts]);
-
-  const handleSeed = async () => {
-    setIsSeeding(true);
-    setSeedSuccess(null);
-    try {
-      const result = await seedLegacyData();
-      setSeedSuccess(result);
-      if (result) await fetchCounts();
-    } catch (err) {
-      console.error("Seeding failed:", err);
-      setSeedSuccess(false);
-    } finally {
-      setIsSeeding(false);
-    }
-  };
+  
 
   return (
     <div className="p-6 md:p-12 flex flex-col gap-8 md:gap-12">
@@ -87,36 +69,7 @@ export default function Dashboard() {
           </p>
         </motion.div>
 
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleSeed}
-          disabled={isSeeding}
-          className={`flex items-center gap-3 px-6 py-4 rounded-2xl font-black text-xs uppercase tracking-widest transition-all border ${
-            seedSuccess === true
-              ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-500"
-              : seedSuccess === false
-                ? "bg-rose-500/10 border-rose-500/20 text-rose-500"
-                : "bg-white/5 border-white/5 text-white/40 hover:text-white hover:bg-white/10"
-          }`}
-        >
-          {isSeeding ? (
-            <Sparkles className="animate-spin" size={16} />
-          ) : seedSuccess === true ? (
-            <CheckCircle2 size={16} />
-          ) : seedSuccess === false ? (
-            <AlertCircle size={16} />
-          ) : (
-            <Database size={16} />
-          )}
-          {isSeeding
-            ? t("admin.seeding")
-            : seedSuccess === true
-              ? t("admin.seeded")
-              : seedSuccess === false
-                ? t("admin.seedFailed")
-                : t("admin.seedLegacy")}
-        </motion.button>
+       
       </header>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
